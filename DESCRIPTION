@@ -13,7 +13,7 @@ VignetteBuilder: knitr
 Depends:
   DatabaseConnector (>= 3.0.0)
 Imports:
-  ParallelLogger (>= 2.0.0),
+  ParallelLogger (>= 2.0.1),
   SqlRender (>= 1.6.6),
   digest,
   readr,
