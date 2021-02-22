@@ -36,18 +36,29 @@ if (!is.null(connectionString)) {
 }
 
 # Details specific to the database:
-databaseId <- "IQVIA_FRANCE_V1375"
-databaseName <- "IQVIA_FRANCE_V1375"
-databaseDescription <- "IQVIA_FRANCE_V1375"
+# databaseId <- "IQVIA_FRANCE_V1375"
+# databaseName <- "IQVIA_FRANCE_V1375"
+# databaseDescription <- "IQVIA_FRANCE_V1375"
 
 # Details for connecting to the CDM and storing the results
-cdmDatabaseSchema <- "cdm_1375"
-cohortDatabaseSchema <- "scratch_asena5_lsc"
-cohortTablePrefix <- "AESI"
+# cdmDatabaseSchema <- "CDM_IQVIA_FRANCE_DA_V1375.dbo"
+#cohortDatabaseSchema <- "scratch.dbo"
+# cohortTablePrefix <- "PBR_21FEB2021_AESI_"
+
+ databaseId <- "CDM_OPTUM_EXTENDED_SES_v1522"
+ databaseName <- "OPTUM_EXTENDED_SES_v1522"
+ databaseDescription <- "OPTUM_EXTENDED_SES_v1522"
+
+# Details for connecting to the CDM and storing the results
+ cdmDatabaseSchema <- "CDM_OPTUM_EXTENDED_SES_v1522.dbo"
+ cohortDatabaseSchema <- "scratch.dbo"
+ cohortTablePrefix <- "PBR_21FEB2021_AESI_OptumSES"
+
+
 minCellCount <- 5
 
 # Set the folder for holding the study output
-projectRootFolder <- "D:/Covid19VaccineAesiIncidenceCharacterization/Runs"
+projectRootFolder <- "D:/ohdsi-studies/Covid19VaccineAesiIncidenceCharacterization/Runs"
 outputFolder <- file.path(projectRootFolder, databaseId)
 if (!dir.exists(outputFolder)) {
   dir.create(outputFolder, recursive = TRUE)

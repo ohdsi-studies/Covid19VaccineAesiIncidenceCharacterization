@@ -1,27 +1,64 @@
 outcomeId,outcomeCohortDefinitionId,outcomeName,cleanWindow,primaryTimeAtRiskStartOffset,primaryTimeAtRiskStartIndex,primaryTimeAtRiskEndOffset,primaryTimeAtRiskEndIndex,excludedCohortDefinitionId,fileName
-301,301,Kawasaki disease in age under 5,365,1,0,28,0,0,Kawasaki.sql
-302,302,Febrile seizures in age under 2,42,0,0,1,0,0,FebrileSeizure.sql
-303,303,Anaphylaxis,30,0,0,2,0,0,Anaphylaxis.sql
+312,312,Acute myocardial infarction IP,365,1,0,28,0,0,AcuteMyocardialInfarction IP.sql
+313,313,Acute myocardial infarction,365,1,0,28,0,0,AcuteMyocardialInfarction.sql
+327,327,Acute myocardial infarction IP FDA ICD10 source concepts,365,1,0,28,0,0,AcuteMyocardialInfarction IP FDA.sql
+345,345,Acute myocardial infarction IP first occurrence,9999,1,0,28,0,0,AcuteMyocardialInfarction IP.sql
+303,303,Anaphylaxis,30,0,0,1,0,0,Anaphylaxis.sql
+328,328,Anaphylaxis FDA ICD10 source concepts,30,0,0,1,0,0,Anaphylaxis FDA.sql
+346,346,Anaphylaxis first occurrence,9999,0,0,1,0,0,Anaphylaxis.sql
+322,322,Appendicitis IP,365,1,0,42,0,0,Appendicitis IP.sql
+323,323,Appendicitis,365,1,0,42,0,0,Appendicitis.sql
+329,329,Appendicitis FDA ICD10 source concepts,365,1,0,42,0,0,Appendicitis FDA.sql
+347,347,Appendicitis first occurrence,9999,1,0,42,0,0,Appendicitis.sql
+307,307,Bells palsy,183,1,0,42,0,0,BellsPalsy.sql
+330,330,Bells palsy FDA ICD10 source concepts,183,1,0,42,0,0,BellsPalsy FDA.sql
+348,348,Bells palsy first occurrence,9999,1,0,42,0,0,BellsPalsy.sql
+315,315,Deep vein thrombosis,365,1,0,28,0,0,DeepVeinThrombosis.sql
+331,331,Deep vein thrombosis FDA ICD10 source concepts,365,1,0,28,0,0,DeepVeinThrombosis FDA.sql
+332,332,Deep vein thrombosis covering ICD9CM/10CM/10,365,1,0,28,0,0,DeepVeinThrombosis coverICD.sql
+333,333,Deep vein thrombosis IP covering ICD9CM/10CM/10,365,1,0,28,0,0,DeepVeinThrombosis IP coverICD.sql
+349,349,Deep vein thrombosis covering ICD9CM/10CM/10 first occurrence,9999,1,0,28,0,0,DeepVeinThrombosis coverICD.sql
+320,320,Disseminated intravascular coagulation IP,365,1,0,28,0,0,DisseminatedIntravascularCoagulation IP.sql
+321,321,Disseminated intravascular coagulation,365,1,0,28,0,0,DisseminatedIntravascularCoagulation.sql
+334,334,Disseminated intravascular coagulation FDA ICD10 source concepts,365,1,0,28,0,0,DisseminatedIntravascularCoagulation FDA.sql
+350,350,Disseminated intravascular coagulation first occurrence,9999,1,0,28,0,0,DisseminatedIntravascularCoagulation.sql
+301,301,Kawasaki disease,365,1,0,28,0,0,Kawasaki.sql
+351,351,Kawasaki disease first occurrence,9999,1,0,28,0,0,Kawasaki.sql
+302,302,Febrile seizures,42,0,0,1,0,0,FebrileSeizure.sql
+352,352,Febrile seizures first occurrence,9999,0,0,1,0,0,FebrileSeizure.sql
+335,335,Seizures,42,0,0,1,0,0,Seizure.sql
+336,336,Seizure disorder (epilepsy),9999,0,0,1,0,0,SeizureDisorder.sql
+337,337,Seizures without Epilepsy,42,0,0,1,0,336,Seizure.sql
+353,353,Seizures first occurrence,9999,0,0,1,0,0,Seizure.sql
+308,308,Encephalomyelitis IP,183,1,0,42,0,0,Encephalomyelitis IP.sql
+309,309,Encephalomyelitis,183,1,0,42,0,0,Encephalomyelitis.sql
+338,338,Encephalomyelitis IP FDA ICD10 source concepts,183,1,0,42,0,0,Encephalomyelitis IP FDA.sql
+354,354,Encephalomyelitis IP first occurrence,9999,1,0,42,0,0,Encephalomyelitis IP.sql
 304,304,Guillian-Barre syndrome IP Primary,365,1,0,42,0,0,GuillainBarreSyndrome IP Primary.sql
 305,305,Guillian-Barre syndrome IP,365,1,0,42,0,0,GuillainBarreSyndrome IP.sql
 306,306,Guillian-Barre syndrome,365,1,0,42,0,0,GuillainBarreSyndrome.sql
-307,307,Bells palsy,183,1,0,42,0,0,BellsPalsy.sql
-308,308,Encephalomyelitis IP,183,1,0,42,0,0,Encephalomyelitis IP.sql
-309,309,Encephalomyelitis,183,1,0,42,0,0,Encephalomyelitis.sql
-310,310,Non-hemorrhagic stroke IP,365,1,0,28,0,0,NonHemorrhagicStroke IP.sql
-311,311,Non-hemorrhagic stroke,365,1,0,28,0,0,NonHemorrhagicStroke.sql
-312,312,Acute myocardial infarction IP,365,1,0,28,0,0,AcuteMyocardialInfarction IP.sql
-313,313,Acute myocardial infarction,365,1,0,28,0,0,AcuteMyocardialInfarction.sql
-314,314,Myocarditis pericarditis,365,1,0,42,0,0,MyocarditisPericarditis.sql
-315,315,Deep vein thrombosis,365,1,0,28,0,0,DeepVeinThrombosis.sql
-316,316,Pulmonary embolism,365,1,0,28,0,0,PulmonaryEmbolism.sql
-317,317,Transverse myelitis IP,365,1,0,90,0,0,TransverseMyelitis IP.sql
-318,318,Transverse myelitis,365,1,0,90,0,0,TransverseMyelitis.sql
-319,319,Narcolepsy,365,1,0,42,0,0,Narcolepsy.sql
-320,320,Disseminated intravascular coagulation IP,365,1,0,28,0,0,DisseminatedIntravascularCoagulation IP.sql
-321,321,Disseminated intravascular coagulation,365,1,0,28,0,0,DisseminatedIntravascularCoagulation.sql
-322,322,Appendicitis IP,365,1,0,42,0,0,Appendicitis IP.sql
-323,323,Appendicitis,365,1,0,42,0,0,Appendicitis.sql
+355,355,Guillian-Barre syndrome IP Primary first occurrence,9999,1,0,42,0,0,GuillainBarreSyndrome IP Primary.sql
 324,324,Hemorrhagic stroke IP,365,1,0,28,0,0,HemorrhagicStroke IP.sql
 325,325,Hemorrhagic stroke,365,1,0,28,0,0,HemorrhagicStroke.sql
+339,339,Hemorrhagic stroke IP FDA ICD10 source concepts,365,1,0,28,0,0,HemorrhagicStroke IP FDA.sql
+356,356,Hemorrhagic stroke IP first occurrence,9999,1,0,28,0,0,HemorrhagicStroke IP.sql
 326,326,Immune thrombocytopenia,365,1,0,42,0,0,ImmuneThrombocytopenia.sql
+340,340,Immune thrombocytopenia FDA ICD10 source concepts,365,1,0,42,0,0,ImmuneThrombocytopenia FDA.sql
+357,357,Immune thrombocytopenia first occurrence,9999,1,0,42,0,0,ImmuneThrombocytopenia.sql
+314,314,Myocarditis pericarditis,365,1,0,42,0,0,MyocarditisPericarditis.sql
+341,341,Myocarditis pericarditis FDA ICD10 source concepts,365,1,0,42,0,0,MyocarditisPericarditis FDA.sql
+358,358,Myocarditis pericarditis first occurrence,9999,1,0,42,0,0,MyocarditisPericarditis.sql
+319,319,Narcolepsy,365,1,0,42,0,0,Narcolepsy.sql
+359,359,Narcolepsy first occurrence,9999,1,0,42,0,0,Narcolepsy.sql
+310,310,Non-hemorrhagic stroke IP,365,1,0,28,0,0,NonHemorrhagicStroke IP.sql
+311,311,Non-hemorrhagic stroke,365,1,0,28,0,0,NonHemorrhagicStroke.sql
+342,342,Non-hemorrhagic stroke IP FDA ICD10 source concepts,365,1,0,28,0,0,NonHemorrhagicStroke IP FDA.sql
+360,360,Non-hemorrhagic stroke IP first occurrence,9999,1,0,28,0,0,NonHemorrhagicStroke IP.sql
+316,316,Pulmonary embolism,365,1,0,28,0,0,PulmonaryEmbolism.sql
+343,343,Pulmonary embolism IP,365,1,0,28,0,0,PulmonaryEmbolism IP.sql
+344,344,Pulmonary embolism FDA ICD10 source concepts,365,1,0,28,0,0,PulmonaryEmbolism FDA.sql
+361,361,Pulmonary embolism first occurrence,9999,1,0,28,0,0,PulmonaryEmbolism.sql
+317,317,Transverse myelitis IP,365,1,0,90,0,0,TransverseMyelitis IP.sql
+318,318,Transverse myelitis,365,1,0,90,0,0,TransverseMyelitis.sql
+362,362,Transverse myelitis first occurrence,9999,1,0,90,0,0,TransverseMyelitis.sql
+

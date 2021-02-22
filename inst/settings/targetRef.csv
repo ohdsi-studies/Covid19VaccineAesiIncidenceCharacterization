@@ -2,3 +2,25 @@ cohortId,cohortName,fileName
 101,persons at risk at start of year 2017-2020 with >=365d prior observation,1JAN 2017-2020.sql
 102,persons at random visit in each calendar year 2017-2020 with >=365d prior observation,random visit 2017-2020.sql
 103,persons with influenza vaccine in 2017-2020 seasons,flu vaccine 2017-2020.sql
+104,persons at risk at start of year 2017-2019 with >=365d prior observation,1JAN 2017-2019.sql
+105,persons at risk at start of year 2017-2019 with >=365d prior observation AND >=1 at risk condition,1JAN 2017-2019 at-risk.sql
+106,persons at risk at start of year 2017-2019 with >=365d prior observation AND =0 at risk condition,1JAN 2017-2019 not-at-risk.sql
+107,persons at risk at start of year 2017-2019 with >=365d prior observation AND >=1 prior influenza vaccine,1JAN 2017-2019 prior influenza vaccine.sql
+108,persons at risk at start of year 2017-2019 with >=365d prior observation with >=1 visit in next year index 1JAN,1JAN 2017-2019 w visit.sql
+109,persons at risk at start of year 2017-2019 with >=365d prior observation with >=1 visit in next year index on visit,random visit 2017-2019.sql
+110,persons at risk at start of year 2017-2019 with >=365d prior observation with >=1 well visit procedure in next year index 1JAN,1JAN 2017-2019 w well visit proc.sql
+111,persons at risk at start of year 2017-2019 with >=365d prior observation with >=1 well visit procedure in next year index well visit,random well visit 2017-2019.sql
+112,persons at risk at start of year 2017-2019 with >=365d prior observation with >=1 well visit procedure in next year index random visit,random visit 2017-2019 w well visit proc.sql
+113,persons at risk at start of year 2017-2019 with >=365d prior observation with >=1 influenza vaccine in next year index 1JAN,1JAN 2017-2019 w influenza vaccine.sql
+114,persons at risk at start of year 2017-2019 with >=365d prior observation with >=1 influenza vaccine in next year index vaccine,flu vaccine 2017-2019.sql
+115,persons at risk at 1APR 2017-2019 with >=365d prior observation,1APR 2017-2019.sql
+116,persons at risk at 1JUL 2017-2019 with >=365d prior observation,1JUL 2017-2019.sql
+117,persons at risk at 1OCT 2017-2019 with >=365d prior observation,1OCT 2017-2019.sql
+118,persons at risk at 1JAN 2020 with >=365d prior observation,1JAN 2020.sql
+119,persons at risk at 1APR 2020 with >=365d prior observation,1APR 2020.sql
+120,persons at risk at 1JUL 2020 with >=365d prior observation,1JUL 2020.sql
+121,persons at risk at 1OCT 2020 with >=365d prior observation,1OCT 2020.sql
+122,persons at risk at 1JAN 2017 with >=365d prior observation,1JAN 2017.sql
+123,persons at risk at 1JAN 2018 with >=365d prior observation,1JAN 2018.sql
+124,persons at risk at 1JAN 2019 with >=365d prior observation,1JAN 2019.sql
+125,persons at risk at start of year 2017-2019 with <365d prior observation,1JAN 2017-2019 wo prior observation.sql

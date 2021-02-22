@@ -1,2 +1,4 @@
 cohortId,cohortName,fileName
 201,Age group by gender,S1AgeGroupByGender.sql
+1,Race = Black,raceBlack.sql
+2,Race = White,raceWhite.sql

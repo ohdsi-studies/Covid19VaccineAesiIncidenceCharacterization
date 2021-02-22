@@ -13,23 +13,14 @@ VignetteBuilder: knitr
 Depends:
   DatabaseConnector (>= 3.0.0)
 Imports:
-  FeatureExtraction (>= 3.0.0),
   ParallelLogger (>= 2.0.0),
-  OhdsiSharing (>= 0.2.2),
   SqlRender (>= 1.6.6),
-  Andromeda (>= 0.3.2),
   digest,
   readr,
   magrittr,
   dplyr,
-  ggplot2 (>= 3.2.1),
   tibble,
   jsonlite,
-  shiny,
-  shinydashboard,
-  pool,
-  DT,
-  htmltools,
   markdown,
   stringr,
   rlang,

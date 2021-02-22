@@ -1,8 +1,6 @@
 DELETE FROM @target_database_schema.@target_cohort_table where cohort_definition_id between 10 and 100;
 
 with ages as (
-  SELECT 1 as age_id, 0 as age_low, 2 as age_high
-  UNION
   SELECT 2 as age_id, 0 as age_low, 5 as age_high
   UNION
   SELECT 3 as age_id, 6 as age_low, 17 as age_high

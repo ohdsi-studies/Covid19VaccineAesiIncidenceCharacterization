@@ -29,7 +29,7 @@ IF OBJECT_ID('tempdb..#excluded_tar_cohort', 'U') IS NOT NULL
 select or1.outcome_id, oc1.subject_id, dateadd(dd,1,oc1.cohort_start_date) as cohort_start_date, dateadd(dd,or1.clean_window, oc1.cohort_start_date) as cohort_end_date
 into #excluded_tar_cohort
 from @cohort_database_schema.@outcome_cohort_table oc1
-  inner join @cohort_database_schema.@outcome_ref_table or1
+  inner join (select * from @cohort_database_schema.@outcome_ref_table where outcome_cohort_definition_id in (@outcome_ids)) or1
   on oc1.cohort_definition_id = or1.outcome_cohort_definition_id
 where dateadd(dd,or1.clean_window, oc1.cohort_start_date) >= dateadd(dd,1,oc1.cohort_start_date)
 
@@ -37,7 +37,7 @@ union all
 
 SELECT or1.outcome_id, c1.subject_id, c1.cohort_start_date, c1.cohort_end_date
 FROM @cohort_database_schema.@outcome_cohort_table c1
-   inner join @cohort_database_schema.@outcome_ref_table or1
+   inner join (select * from @cohort_database_schema.@outcome_ref_table where outcome_cohort_definition_id in (@outcome_ids)) or1
   on c1.cohort_definition_id = or1.excluded_cohort_definition_id
 ;
 
@@ -69,8 +69,8 @@ select tc1.cohort_definition_id,
           else '9/9/1999' --tc1.cohort_end_date --shouldnt get here if tar set properly
           end as end_date
 into #TTAR
-from @cohort_database_schema.@time_at_risk_table tar1,
-  @cohort_database_schema.@target_cohort_table tc1
+from (select * from @cohort_database_schema.@time_at_risk_table where time_at_risk_id in (@time_at_risk_ids)) tar1,
+ (select * from @cohort_database_schema.@target_cohort_table where cohort_definition_id in (@target_ids)) tc1
 inner join @cdm_database_schema.observation_period op1
   on tc1.subject_id = op1.person_id
   and tc1.cohort_start_date >= op1.observation_period_start_date
@@ -375,7 +375,7 @@ select t1.cohort_definition_id as target_cohort_definition_id,
   count_big(distinct t1.subject_id) as num_persons,
   sum((datediff(dd,t1.start_date, t1.end_date)+1)/365.25) as person_years
 from #TTAR_erafied t1
-  INNER JOIN @cohort_database_schema.@subgroup_cohort_table s1
+  INNER JOIN (select * from @cohort_database_schema.@subgroup_cohort_table where cohort_definition_id in (@subgroup_ids)) s1
   on t1.subject_id = s1.subject_id
   and t1.start_date >= s1.cohort_start_date
   and t1.start_date <= s1.cohort_end_date
@@ -412,7 +412,7 @@ select t1.cohort_definition_id as target_cohort_definition_id,
   count_big(distinct o1.subject_id) as num_persons_w_outcome,
   count_big(o1.subject_id) as num_outcomes
 from #TTAR_erafied t1
-  inner join @cohort_database_schema.@outcome_cohort_table o1
+  inner join (select * from @cohort_database_schema.@outcome_cohort_table where cohort_definition_id in (@outcome_ids)) o1
   on t1.subject_id = o1.subject_id
   and t1.start_date <= o1.cohort_start_date
   and t1.end_date >= o1.cohort_start_date
@@ -429,11 +429,11 @@ select t1.cohort_definition_id as target_cohort_definition_id,
   count_big(distinct o1.subject_id) as num_persons_w_outcome,
   count_big(o1.subject_id) as num_outcomes
 from #TTAR_erafied t1
-  inner join @cohort_database_schema.@outcome_cohort_table o1
+  inner join (select * from @cohort_database_schema.@outcome_cohort_table where cohort_definition_id in (@outcome_ids)) o1
   on t1.subject_id = o1.subject_id
   and t1.start_date <= o1.cohort_start_date
   and t1.end_date >= o1.cohort_start_date
-  INNER JOIN @cohort_database_schema.@subgroup_cohort_table s1
+  INNER JOIN (select * from @cohort_database_schema.@subgroup_cohort_table where cohort_definition_id in (@subgroup_ids)) s1
   on t1.subject_id = s1.subject_id
   and t1.start_date >= s1.cohort_start_date
   and t1.start_date <= s1.cohort_end_date
@@ -499,7 +499,7 @@ from #TTAR_erafied t1
   and t1.subject_id = et1.subject_id
   and t1.start_date <= et1.start_date
   and t1.end_date >= et1.end_date
-  INNER JOIN @cohort_database_schema.@subgroup_cohort_table s1
+  INNER JOIN (select * from @cohort_database_schema.@subgroup_cohort_table where cohort_definition_id in (@subgroup_ids)) s1
   on t1.subject_id = s1.subject_id
   and t1.start_date >= s1.cohort_start_date
   and t1.start_date <= s1.cohort_end_date
@@ -588,7 +588,7 @@ from
   inner join (select distinct target_cohort_definition_id, subject_id from #exc_TTAR_o_erafied) e0
   on t0.subject_id = e0.subject_id
   and t0.cohort_definition_id = e0.target_cohort_definition_id
-  INNER JOIN @cohort_database_schema.@subgroup_cohort_table s1
+  INNER JOIN (select * from @cohort_database_schema.@subgroup_cohort_table where cohort_definition_id in (@subgroup_ids)) s1
   on t0.subject_id = s1.subject_id
   and t0.start_date >= s1.cohort_start_date
   and t0.start_date <= s1.cohort_end_date
@@ -656,7 +656,7 @@ from #TTAR_erafied t1
   and t1.subject_id = et1.subject_id
   and t1.start_date <= et1.start_date
   and t1.end_date >= et1.end_date
-  inner join @cohort_database_schema.@outcome_cohort_table  o1
+  inner join (select * from @cohort_database_schema.@outcome_cohort_table where cohort_definition_id in (@outcome_ids))  o1
   on et1.subject_id = o1.subject_id
   and et1.outcome_id = o1.cohort_definition_id
   and et1.start_date <= o1.cohort_start_date
@@ -680,12 +680,12 @@ from #TTAR_erafied t1
   and t1.subject_id = et1.subject_id
   and t1.start_date <= et1.start_date
   and t1.end_date >= et1.end_date
-  inner join @cohort_database_schema.@outcome_cohort_table o1
+  inner join (select * from @cohort_database_schema.@outcome_cohort_table where cohort_definition_id in (@outcome_ids)) o1
   on et1.subject_id = o1.subject_id
   and et1.outcome_id = o1.cohort_definition_id
   and et1.start_date <= o1.cohort_start_date
   and et1.end_date >= o1.cohort_start_date
-  INNER JOIN @cohort_database_schema.@subgroup_cohort_table s1
+  INNER JOIN (select * from @cohort_database_schema.@subgroup_cohort_table where cohort_definition_id in (@subgroup_ids)) s1
   on t1.subject_id = s1.subject_id
   and t1.start_date >= s1.cohort_start_date
   and t1.start_date <= s1.cohort_end_date
@@ -730,7 +730,7 @@ from
   inner join (select distinct target_cohort_definition_id, subject_id from #exc_TTAR_o_erafied) e0
   on t0.subject_id = e0.subject_id
   and t0.cohort_definition_id = e0.target_cohort_definition_id
-  inner join @cohort_database_schema.@outcome_cohort_table o1
+  inner join (select * from @cohort_database_schema.@outcome_cohort_table where cohort_definition_id in (@outcome_ids)) o1
     on t0.subject_id = o1.subject_id
     and t0.start_date <= o1.cohort_start_date
     and t0.end_date >= o1.cohort_start_date
@@ -755,7 +755,7 @@ inner join
     and t1.subject_id = et1.subject_id
     and t1.start_date <= et1.start_date
     and t1.end_date >= et1.end_date
-  inner join @cohort_database_schema.@outcome_cohort_table o1
+  inner join (select * from @cohort_database_schema.@outcome_cohort_table where cohort_definition_id in (@outcome_ids)) o1
     on et1.subject_id = o1.subject_id
     and et1.outcome_id = o1.cohort_definition_id
     and et1.start_date <= o1.cohort_start_date
@@ -800,11 +800,11 @@ from
   inner join (select distinct target_cohort_definition_id, subject_id from #exc_TTAR_o_erafied) e0
   on t0.subject_id = e0.subject_id
   and t0.cohort_definition_id = e0.target_cohort_definition_id
-  INNER JOIN @cohort_database_schema.@subgroup_cohort_table s1
+  INNER JOIN (select * from @cohort_database_schema.@subgroup_cohort_table where cohort_definition_id in (@subgroup_ids)) s1
   on t0.subject_id = s1.subject_id
   and t0.start_date >= s1.cohort_start_date
   and t0.start_date <= s1.cohort_end_date
-  inner join @cohort_database_schema.@outcome_cohort_table o1
+  inner join (select * from @cohort_database_schema.@outcome_cohort_table where cohort_definition_id in (@outcome_ids)) o1
     on t0.subject_id = o1.subject_id
     and t0.start_date <= o1.cohort_start_date
     and t0.end_date >= o1.cohort_start_date
@@ -830,7 +830,7 @@ inner join
     and t1.subject_id = et1.subject_id
     and t1.start_date <= et1.start_date
     and t1.end_date >= et1.end_date
-  inner join @cohort_database_schema.@outcome_cohort_table o1
+  inner join (select * from @cohort_database_schema.@outcome_cohort_table where cohort_definition_id in (@outcome_ids)) o1
     on et1.subject_id = o1.subject_id
     and et1.outcome_id = o1.cohort_definition_id
     and et1.start_date <= o1.cohort_start_date
@@ -876,10 +876,10 @@ select t1.target_cohort_definition_id,
 	o1.outcome_name,
 	o1.clean_window
 into #tscotar_ref
-from @cohort_database_schema.@target_ref_table  t1,
-	@cohort_database_schema.@time_at_risk_table tar1,
-	(select subgroup_cohort_definition_id, subgroup_name from @cohort_database_schema.@subgroup_ref_table union select 0 as cohort_definition_id,'All' as subgroup_name) s1,
-	@cohort_database_schema.@outcome_ref_table o1
+from (select * from @cohort_database_schema.@target_ref_table where target_cohort_definition_id in (@target_ids))  t1,
+	(select * from @cohort_database_schema.@time_at_risk_table where time_at_risk_id in (@time_at_risk_ids)) tar1,
+	(select subgroup_cohort_definition_id, subgroup_name from @cohort_database_schema.@subgroup_ref_table where subgroup_cohort_definition_id in (@subgroup_ids) union select 0 as cohort_definition_id,'All' as subgroup_name) s1,
+	(select * from @cohort_database_schema.@outcome_ref_table where outcome_id in (@outcome_ids)) o1
 ;
 
 
@@ -954,11 +954,9 @@ left join
 
 
 
-IF OBJECT_ID('@cohort_database_schema.@summary_table', 'U') IS NOT NULL
-	DROP TABLE @cohort_database_schema.@summary_table;
 
+insert into @cohort_database_schema.@summary_table
 select '@database_name' as database_name, *
-into @cohort_database_schema.@summary_table
 from #incidence_summary is1
 ;
 
