@@ -1,8 +1,8 @@
 outcomeId,outcomeCohortDefinitionId,outcomeName,cleanWindow,primaryTimeAtRiskStartOffset,primaryTimeAtRiskStartIndex,primaryTimeAtRiskEndOffset,primaryTimeAtRiskEndIndex,excludedCohortDefinitionId,fileName
-312,312,Acute myocardial infarction IP,365,1,0,28,0,0,AcuteMyocardialInfarction IP.sql
+312,312,Acute myocardial infarction IP,365,1,0,28,0,0,AMI_IP.sql
 313,313,Acute myocardial infarction,365,1,0,28,0,0,AcuteMyocardialInfarction.sql
-327,327,Acute myocardial infarction IP FDA ICD10 source concepts,365,1,0,28,0,0,AcuteMyocardialInfarction IP FDA.sql
-345,345,Acute myocardial infarction IP first occurrence,9999,1,0,28,0,0,AcuteMyocardialInfarction IP.sql
+327,327,Acute myocardial infarction IP FDA ICD10 source concepts,365,1,0,28,0,0,AMI_IP_FDA.sql
+345,345,Acute myocardial infarction IP first occurrence,9999,1,0,28,0,0,AMI_IP.sql
 303,303,Anaphylaxis,30,0,0,1,0,0,Anaphylaxis.sql
 328,328,Anaphylaxis FDA ICD10 source concepts,30,0,0,1,0,0,Anaphylaxis FDA.sql
 346,346,Anaphylaxis first occurrence,9999,0,0,1,0,0,Anaphylaxis.sql
@@ -15,13 +15,13 @@ outcomeId,outcomeCohortDefinitionId,outcomeName,cleanWindow,primaryTimeAtRiskSta
 348,348,Bells palsy first occurrence,9999,1,0,42,0,0,BellsPalsy.sql
 315,315,Deep vein thrombosis,365,1,0,28,0,0,DeepVeinThrombosis.sql
 331,331,Deep vein thrombosis FDA ICD10 source concepts,365,1,0,28,0,0,DeepVeinThrombosis FDA.sql
-332,332,Deep vein thrombosis covering ICD9CM/10CM/10,365,1,0,28,0,0,DeepVeinThrombosis coverICD.sql
-333,333,Deep vein thrombosis IP covering ICD9CM/10CM/10,365,1,0,28,0,0,DeepVeinThrombosis IP coverICD.sql
-349,349,Deep vein thrombosis covering ICD9CM/10CM/10 first occurrence,9999,1,0,28,0,0,DeepVeinThrombosis coverICD.sql
-320,320,Disseminated intravascular coagulation IP,365,1,0,28,0,0,DisseminatedIntravascularCoagulation IP.sql
-321,321,Disseminated intravascular coagulation,365,1,0,28,0,0,DisseminatedIntravascularCoagulation.sql
-334,334,Disseminated intravascular coagulation FDA ICD10 source concepts,365,1,0,28,0,0,DisseminatedIntravascularCoagulation FDA.sql
-350,350,Disseminated intravascular coagulation first occurrence,9999,1,0,28,0,0,DisseminatedIntravascularCoagulation.sql
+332,332,Deep vein thrombosis covering ICD9CM/10CM/10,365,1,0,28,0,0,DVT_coverICD.sql
+333,333,Deep vein thrombosis IP covering ICD9CM/10CM/10,365,1,0,28,0,0,DVT_IP_coverICD.sql
+349,349,Deep vein thrombosis covering ICD9CM/10CM/10 first occurrence,9999,1,0,28,0,0,DVT_coverICD.sql
+320,320,Disseminated intravascular coagulation IP,365,1,0,28,0,0,DisIntraCoag_IP.sql
+321,321,Disseminated intravascular coagulation,365,1,0,28,0,0,DisIntraCoag.sql
+334,334,Disseminated intravascular coagulation FDA ICD10 source concepts,365,1,0,28,0,0,DisIntraCoag_FDA.sql
+350,350,Disseminated intravascular coagulation first occurrence,9999,1,0,28,0,0,DisIntraCoag.sql
 301,301,Kawasaki disease,365,1,0,28,0,0,Kawasaki.sql
 351,351,Kawasaki disease first occurrence,9999,1,0,28,0,0,Kawasaki.sql
 302,302,Febrile seizures,42,0,0,1,0,0,FebrileSeizure.sql
@@ -34,10 +34,10 @@ outcomeId,outcomeCohortDefinitionId,outcomeName,cleanWindow,primaryTimeAtRiskSta
 309,309,Encephalomyelitis,183,1,0,42,0,0,Encephalomyelitis.sql
 338,338,Encephalomyelitis IP FDA ICD10 source concepts,183,1,0,42,0,0,Encephalomyelitis IP FDA.sql
 354,354,Encephalomyelitis IP first occurrence,9999,1,0,42,0,0,Encephalomyelitis IP.sql
-304,304,Guillian-Barre syndrome IP Primary,365,1,0,42,0,0,GuillainBarreSyndrome IP Primary.sql
+304,304,Guillian-Barre syndrome IP Primary,365,1,0,42,0,0,GBS_IP_Primary.sql
 305,305,Guillian-Barre syndrome IP,365,1,0,42,0,0,GuillainBarreSyndrome IP.sql
 306,306,Guillian-Barre syndrome,365,1,0,42,0,0,GuillainBarreSyndrome.sql
-355,355,Guillian-Barre syndrome IP Primary first occurrence,9999,1,0,42,0,0,GuillainBarreSyndrome IP Primary.sql
+355,355,Guillian-Barre syndrome IP Primary first occurrence,9999,1,0,42,0,0,GBS_IP_Primary.sql
 324,324,Hemorrhagic stroke IP,365,1,0,28,0,0,HemorrhagicStroke IP.sql
 325,325,Hemorrhagic stroke,365,1,0,28,0,0,HemorrhagicStroke.sql
 339,339,Hemorrhagic stroke IP FDA ICD10 source concepts,365,1,0,28,0,0,HemorrhagicStroke IP FDA.sql

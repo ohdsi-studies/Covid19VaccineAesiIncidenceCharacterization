@@ -36,15 +36,15 @@ if (!is.null(connectionString)) {
 }
 
 # Details specific to the database:
-databaseId <- "CDM_IBM_MDCD_V1476"
-databaseName <- "CDM_IBM_MDCD_V1476"
-databaseDescription <- "CDM_IBM_MDCD_V1476"
+databaseId <- "CDM_IQVIA_GERMANY_DA_V1049"
+databaseName <- "CDM_IQVIA_GERMANY_DA_V1049"
+databaseDescription <- "CDM_IQVIA_GERMANY_DA_V1049"
 # cdmDatabaseSchema <- "cdm"
 # cohortDatabaseSchema <- "scratch_asena5_lsc"
 # cohortTablePrefix <- "AESI"
 
 # Details for connecting to the CDM and storing the results
-cdmDatabaseSchema <- "CDM_IBM_MDCD_V1476.dbo"
+cdmDatabaseSchema <- "CDM_IQVIA_GERMANY_DA_V1049.dbo"
 cohortDatabaseSchema <- "scratch.dbo"
 cohortTablePrefix <- "AS_22FEB2021_AESI_"
 
