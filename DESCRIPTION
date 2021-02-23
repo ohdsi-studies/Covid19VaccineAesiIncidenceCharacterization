@@ -20,7 +20,7 @@ Imports:
   magrittr,
   dplyr,
   tibble,
-  jsonlite,
+  RJSONIO,
   markdown,
   stringr,
   rlang,

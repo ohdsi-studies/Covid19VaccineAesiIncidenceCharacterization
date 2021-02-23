@@ -242,21 +242,21 @@ runStudy <- function(connectionDetails = NULL,
   packageMetadata <- data.frame(packageId = getThisPackageName(),
                                 packageVersion = packageVersionNumber,
                                 executionDate = start,
-                                params = as.character(jsonlite::toJSON(list(targetCohortTable = targetCohortTable,
-                                                                            targetRefTable = targetRefTable,
-                                                                            subgroupCohortTable = subgroupCohortTable,
-                                                                            subgroupRefTable = subgroupRefTable,
-                                                                            outcomeCohortTable = outcomeCohortTable,
-                                                                            outcomeRefTable = outcomeRefTable,
-                                                                            timeAtRiskTable = timeAtRiskTable,
-                                                                            summaryTable = summaryTable,
-                                                                            exportFolder = exportFolder,
-                                                                            databaseId = databaseId,
-                                                                            databaseName = databaseName,
-                                                                            databaseDescription = databaseDescription,
-                                                                            minCellCount = minCellCount,
-                                                                            incremental = incremental,
-                                                                            incrementalFolder = incrementalFolder))))
+                                params = RJSONIO::toJSON(list(targetCohortTable = targetCohortTable,
+                                                              targetRefTable = targetRefTable,
+                                                              subgroupCohortTable = subgroupCohortTable,
+                                                              subgroupRefTable = subgroupRefTable,
+                                                              outcomeCohortTable = outcomeCohortTable,
+                                                              outcomeRefTable = outcomeRefTable,
+                                                              timeAtRiskTable = timeAtRiskTable,
+                                                              summaryTable = summaryTable,
+                                                              exportFolder = exportFolder,
+                                                              databaseId = databaseId,
+                                                              databaseName = databaseName,
+                                                              databaseDescription = databaseDescription,
+                                                              minCellCount = minCellCount,
+                                                              incremental = incremental,
+                                                              incrementalFolder = incrementalFolder)))
   writeToCsv(packageMetadata, file.path(exportFolder, "package.csv"))
   
   
@@ -285,212 +285,47 @@ computeAndExportIncidenceAnalysis <- function(connection,
                                               databaseName,
                                               summaryTable,
                                               minCellCount) {
-  # Run the analysis
   
-  #1: impact of population characteristics
-  targetIds <- c(104, 105, 106, 107)
-  subgroupIds <- c(1, 2, 21, 22, 31, 32, 41, 42, 51, 52, 61, 62, 71, 72, 81, 82, 91, 92)
-  timeAtRiskIds <- c(5)
-  outcomeIds <- c(312, 303, 323, 307, 332, 321, 301, 302, 308, 304, 324, 326, 314, 319, 310, 316, 318)
+  # Run the analyses as specified in the settings/analysisSettings.json file 
+  analysisListFile <- system.file("settings/analysisSettings.json", package = getThisPackageName(), mustWork = TRUE)
+  analysisListJsonFromFile <- paste(readLines(analysisListFile),collapse="\n");
+  analysisList <- RJSONIO::fromJSON(analysisListJsonFromFile)
   
   
-  runIncidenceAnalysisSql <- SqlRender::loadRenderTranslateSql("runIncidenceAnalysis.sql",
-                                                               packageName = getThisPackageName(),
-                                                               dbms = connection@dbms,
-                                                               oracleTempSchema = oracleTempSchema,
-                                                               warnOnMissingParameters = TRUE,
-                                                               cdm_database_schema = cdmDatabaseSchema,
-                                                               cohort_database_schema = cohortDatabaseSchema,
-                                                               target_cohort_table = targetCohortTable,
-                                                               target_ref_table = targetRefTable,
-                                                               target_ids = targetIds,
-                                                               subgroup_cohort_table = subgroupCohortTable,
-                                                               subgroup_ref_table = subgroupRefTable,
-                                                               subgroup_ids = subgroupIds,
-                                                               outcome_cohort_table = outcomeCohortTable,
-                                                               outcome_ref_table = outcomeRefTable,
-                                                               outcome_ids = outcomeIds,
-                                                               time_at_risk_table = timeAtRiskTable,
-                                                               time_at_risk_ids = timeAtRiskIds,
-                                                               database_name = databaseName,
-                                                               summary_table = summaryTable)
-  DatabaseConnector::executeSql(connection = connection,
-                                sql = runIncidenceAnalysisSql,
-                                progressBar = TRUE,
-                                reportOverallTime = TRUE)
-  
-  
-  
-  
-  #2: Impact of anchoring (and future severity of illness)
-  targetIds <- c(108, 109, 110, 111, 112, 113, 114)
-  subgroupIds <- c(21, 22, 31, 32, 41, 42, 51, 52, 61, 62, 71, 72, 81, 82, 91, 92)
-  timeAtRiskIds <- c(1, 2, 3, 4, 5)
-  outcomeIds <- c(312, 303, 323, 307, 332, 321, 301, 302, 308, 304, 324, 326, 314, 319, 310, 316, 318)
-  
-  
-  runIncidenceAnalysisSql <- SqlRender::loadRenderTranslateSql("runIncidenceAnalysis.sql",
-                                                               packageName = getThisPackageName(),
-                                                               dbms = connection@dbms,
-                                                               oracleTempSchema = oracleTempSchema,
-                                                               warnOnMissingParameters = TRUE,
-                                                               cdm_database_schema = cdmDatabaseSchema,
-                                                               cohort_database_schema = cohortDatabaseSchema,
-                                                               target_cohort_table = targetCohortTable,
-                                                               target_ref_table = targetRefTable,
-                                                               target_ids = targetIds,
-                                                               subgroup_cohort_table = subgroupCohortTable,
-                                                               subgroup_ref_table = subgroupRefTable,
-                                                               subgroup_ids = subgroupIds,
-                                                               outcome_cohort_table = outcomeCohortTable,
-                                                               outcome_ref_table = outcomeRefTable,
-                                                               outcome_ids = outcomeIds,
-                                                               time_at_risk_table = timeAtRiskTable,
-                                                               time_at_risk_ids = timeAtRiskIds,
-                                                               database_name = databaseName,
-                                                               summary_table = summaryTable)
-  DatabaseConnector::executeSql(connection = connection,
-                                sql = runIncidenceAnalysisSql,
-                                progressBar = TRUE,
-                                reportOverallTime = TRUE)
-  
-  
-  
-  
-  #3: Impact of seasonal trends and COVID
-  targetIds <- c(104, 115, 116, 117, 118, 119, 120, 121)
-  subgroupIds <- c(21, 22, 31, 32, 41, 42, 51, 52, 61, 62, 71, 72, 81, 82, 91, 92)
-  timeAtRiskIds <- c(4)
-  outcomeIds <- c(312, 303, 323, 307, 332, 321, 301, 302, 308, 304, 324, 326, 314, 319, 310, 316, 318)
-  
-  runIncidenceAnalysisSql <- SqlRender::loadRenderTranslateSql("runIncidenceAnalysis.sql",
-                                                               packageName = getThisPackageName(),
-                                                               dbms = connection@dbms,
-                                                               oracleTempSchema = oracleTempSchema,
-                                                               warnOnMissingParameters = TRUE,
-                                                               cdm_database_schema = cdmDatabaseSchema,
-                                                               cohort_database_schema = cohortDatabaseSchema,
-                                                               target_cohort_table = targetCohortTable,
-                                                               target_ref_table = targetRefTable,
-                                                               target_ids = targetIds,
-                                                               subgroup_cohort_table = subgroupCohortTable,
-                                                               subgroup_ref_table = subgroupRefTable,
-                                                               subgroup_ids = subgroupIds,
-                                                               outcome_cohort_table = outcomeCohortTable,
-                                                               outcome_ref_table = outcomeRefTable,
-                                                               outcome_ids = outcomeIds,
-                                                               time_at_risk_table = timeAtRiskTable,
-                                                               time_at_risk_ids = timeAtRiskIds,
-                                                               database_name = databaseName,
-                                                               summary_table = summaryTable)
-  DatabaseConnector::executeSql(connection = connection,
-                                sql = runIncidenceAnalysisSql,
-                                progressBar = TRUE,
-                                reportOverallTime = TRUE)
-  
-  
-  
-  
-  #4: Impact of secular trends
-  targetIds <- c(122, 123, 124)
-  subgroupIds <- c(21, 22, 31, 32, 41, 42, 51, 52, 61, 62, 71, 72, 81, 82, 91, 92)
-  timeAtRiskIds <- c(5)
-  outcomeIds <- c(312, 303, 323, 307, 332, 321, 301, 302, 308, 304, 324, 326, 314, 319, 310, 316, 318)
-  
-  runIncidenceAnalysisSql <- SqlRender::loadRenderTranslateSql("runIncidenceAnalysis.sql",
-                                                               packageName = getThisPackageName(),
-                                                               dbms = connection@dbms,
-                                                               oracleTempSchema = oracleTempSchema,
-                                                               warnOnMissingParameters = TRUE,
-                                                               cdm_database_schema = cdmDatabaseSchema,
-                                                               cohort_database_schema = cohortDatabaseSchema,
-                                                               target_cohort_table = targetCohortTable,
-                                                               target_ref_table = targetRefTable,
-                                                               target_ids = targetIds,
-                                                               subgroup_cohort_table = subgroupCohortTable,
-                                                               subgroup_ref_table = subgroupRefTable,
-                                                               subgroup_ids = subgroupIds,
-                                                               outcome_cohort_table = outcomeCohortTable,
-                                                               outcome_ref_table = outcomeRefTable,
-                                                               outcome_ids = outcomeIds,
-                                                               time_at_risk_table = timeAtRiskTable,
-                                                               time_at_risk_ids = timeAtRiskIds,
-                                                               database_name = databaseName,
-                                                               summary_table = summaryTable)
-  DatabaseConnector::executeSql(connection = connection,
-                                sql = runIncidenceAnalysisSql,
-                                progressBar = TRUE,
-                                reportOverallTime = TRUE)
-  
-  
-  
-  #5: Impact of prior observation period
-  targetIds <- c(125)
-  subgroupIds <- c(21, 22, 31, 32, 41, 42, 51, 52, 61, 62, 71, 72, 81, 82, 91, 92)
-  timeAtRiskIds <- c(5)
-  outcomeIds <- c(312, 303, 323, 307, 332, 321, 301, 302, 308, 304, 324, 326, 314, 319, 310, 316, 318)
-  
-  runIncidenceAnalysisSql <- SqlRender::loadRenderTranslateSql("runIncidenceAnalysis.sql",
-                                                               packageName = getThisPackageName(),
-                                                               dbms = connection@dbms,
-                                                               oracleTempSchema = oracleTempSchema,
-                                                               warnOnMissingParameters = TRUE,
-                                                               cdm_database_schema = cdmDatabaseSchema,
-                                                               cohort_database_schema = cohortDatabaseSchema,
-                                                               target_cohort_table = targetCohortTable,
-                                                               target_ref_table = targetRefTable,
-                                                               target_ids = targetIds,
-                                                               subgroup_cohort_table = subgroupCohortTable,
-                                                               subgroup_ref_table = subgroupRefTable,
-                                                               subgroup_ids = subgroupIds,
-                                                               outcome_cohort_table = outcomeCohortTable,
-                                                               outcome_ref_table = outcomeRefTable,
-                                                               outcome_ids = outcomeIds,
-                                                               time_at_risk_table = timeAtRiskTable,
-                                                               time_at_risk_ids = timeAtRiskIds,
-                                                               database_name = databaseName,
-                                                               summary_table = summaryTable)
-  DatabaseConnector::executeSql(connection = connection,
-                                sql = runIncidenceAnalysisSql,
-                                progressBar = TRUE,
-                                reportOverallTime = TRUE)
-  
-  
-  
-  #6: Impact of phenotype definition and outcome clean window
-  targetIds <- c(104)
-  subgroupIds <- c(21, 22, 31, 32, 41, 42, 51, 52, 61, 62, 71, 72, 81, 82, 91, 92)
-  timeAtRiskIds <- c(5)
-  outcomeIds <- c(313, 327, 345, 328, 346, 322, 329, 347, 330, 348, 315, 331, 333, 349, 320, 334, 350, 351, 352, 335, 337, 353, 309, 338, 354, 305, 306, 355, 325, 339, 356, 340, 357, 341, 358, 359, 311, 342, 360, 343, 344, 361, 317, 362)
-  
-  runIncidenceAnalysisSql <- SqlRender::loadRenderTranslateSql("runIncidenceAnalysis.sql",
-                                                               packageName = getThisPackageName(),
-                                                               dbms = connection@dbms,
-                                                               oracleTempSchema = oracleTempSchema,
-                                                               warnOnMissingParameters = TRUE,
-                                                               cdm_database_schema = cdmDatabaseSchema,
-                                                               cohort_database_schema = cohortDatabaseSchema,
-                                                               target_cohort_table = targetCohortTable,
-                                                               target_ref_table = targetRefTable,
-                                                               target_ids = targetIds,
-                                                               subgroup_cohort_table = subgroupCohortTable,
-                                                               subgroup_ref_table = subgroupRefTable,
-                                                               subgroup_ids = subgroupIds,
-                                                               outcome_cohort_table = outcomeCohortTable,
-                                                               outcome_ref_table = outcomeRefTable,
-                                                               outcome_ids = outcomeIds,
-                                                               time_at_risk_table = timeAtRiskTable,
-                                                               time_at_risk_ids = timeAtRiskIds,
-                                                               database_name = databaseName,
-                                                               summary_table = summaryTable)
-  DatabaseConnector::executeSql(connection = connection,
-                                sql = runIncidenceAnalysisSql,
-                                progressBar = TRUE,
-                                reportOverallTime = TRUE)
-  
-  
-  
-  
+  for(i in 1:length(analysisList$analysisList)) {
+    ParallelLogger::logInfo(paste0("(", i, "/", length(analysisList$analysisList), "): ", analysisList$analysisList[[i]]$name))
+    targetIds <- analysisList$analysisList[[i]]$targetIds
+    subgroupIds <- analysisList$analysisList[[i]]$subgroupIds
+    timeAtRiskIds <- analysisList$analysisList[[i]]$timeAtRiskIds
+    outcomeIds <- analysisList$analysisList[[i]]$outcomeIds
+    
+    
+    runIncidenceAnalysisSql <- SqlRender::loadRenderTranslateSql("runIncidenceAnalysis.sql",
+                                                                 packageName = getThisPackageName(),
+                                                                 dbms = connection@dbms,
+                                                                 oracleTempSchema = oracleTempSchema,
+                                                                 warnOnMissingParameters = TRUE,
+                                                                 cdm_database_schema = cdmDatabaseSchema,
+                                                                 cohort_database_schema = cohortDatabaseSchema,
+                                                                 target_cohort_table = targetCohortTable,
+                                                                 target_ref_table = targetRefTable,
+                                                                 target_ids = targetIds,
+                                                                 subgroup_cohort_table = subgroupCohortTable,
+                                                                 subgroup_ref_table = subgroupRefTable,
+                                                                 subgroup_ids = subgroupIds,
+                                                                 outcome_cohort_table = outcomeCohortTable,
+                                                                 outcome_ref_table = outcomeRefTable,
+                                                                 outcome_ids = outcomeIds,
+                                                                 time_at_risk_table = timeAtRiskTable,
+                                                                 time_at_risk_ids = timeAtRiskIds,
+                                                                 database_name = databaseName,
+                                                                 summary_table = summaryTable)
+    DatabaseConnector::executeSql(connection = connection,
+                                  sql = runIncidenceAnalysisSql,
+                                  progressBar = TRUE,
+                                  reportOverallTime = TRUE)
+  }
+
   # Export & Censor results
   ParallelLogger::logInfo("Exporting analysis results")
   getIncidenceAnalysisSql <- SqlRender::loadRenderTranslateSql("GetIncidenceAnalysisResults.sql",
