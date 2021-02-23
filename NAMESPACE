@@ -2,6 +2,7 @@
 
 export(createCohortTable)
 export(instantiateCohortSet)
+export(preMergeResultsFiles)
 export(readCsv)
 export(runStudy)
 export(uploadDiagnosticsResults)
