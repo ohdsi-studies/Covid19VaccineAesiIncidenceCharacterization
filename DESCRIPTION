@@ -1,7 +1,7 @@
 Package: Covid19VaccineAesiIncidenceCharacterization
 Type: Package
 Title: COVID-19 Vaccine AESI Incidence Characterization
-Version: 0.0.4
+Version: 0.1.0
 Authors@R: c(
 	person("Anthony", "Sena", , "asena5@its.jnj.com", role = c("aut", "cre")),
 	person("Patick", "Ryan", role = c("aut"))
