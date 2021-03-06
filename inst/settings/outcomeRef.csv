@@ -6,6 +6,7 @@ outcomeId,outcomeCohortDefinitionId,outcomeName,cleanWindow,primaryTimeAtRiskSta
 303,303,Anaphylaxis,30,0,0,1,0,0,Anaphylaxis.sql
 328,328,Anaphylaxis FDA ICD10 source concepts,30,0,0,1,0,0,Anaphylaxis FDA.sql
 346,346,Anaphylaxis first occurrence,9999,0,0,1,0,0,Anaphylaxis.sql
+363,363,Anaphylaxis IPED,30,0,0,1,0,0,Anaphylaxis IPED.sql
 322,322,Appendicitis IP,365,1,0,42,0,0,Appendicitis IP.sql
 323,323,Appendicitis,365,1,0,42,0,0,Appendicitis.sql
 329,329,Appendicitis FDA ICD10 source concepts,365,1,0,42,0,0,Appendicitis FDA.sql
@@ -54,6 +55,7 @@ outcomeId,outcomeCohortDefinitionId,outcomeName,cleanWindow,primaryTimeAtRiskSta
 311,311,Non-hemorrhagic stroke,365,1,0,28,0,0,NonHemorrhagicStroke.sql
 342,342,Non-hemorrhagic stroke IP FDA ICD10 source concepts,365,1,0,28,0,0,NonHemorrhagicStroke IP FDA.sql
 360,360,Non-hemorrhagic stroke IP first occurrence,9999,1,0,28,0,0,NonHemorrhagicStroke IP.sql
+364,364,Non-hemorrhagic stroke broad,365,1,0,28,0,0,NonHemorrhagicStroke broad.sql
 316,316,Pulmonary embolism,365,1,0,28,0,0,PulmonaryEmbolism.sql
 343,343,Pulmonary embolism IP,365,1,0,28,0,0,PulmonaryEmbolism IP.sql
 344,344,Pulmonary embolism FDA ICD10 source concepts,365,1,0,28,0,0,PulmonaryEmbolism FDA.sql
