@@ -1,43 +1,30 @@
 {
   "ConceptSets": [
     {
-      "id": 1,
-      "name": "Anaphylaxis FDA ICD10CM concepts",
+      "id": 4,
+      "name": "Transverse Myelitis",
       "expression": {
         "items": [
           {
             "concept": {
-              "CONCEPT_CLASS_ID": "7-char billing code",
-              "CONCEPT_CODE": "T80.52XA",
-              "CONCEPT_ID": 45541800,
-              "CONCEPT_NAME": "Anaphylactic reaction due to vaccination, initial encounter",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "CONCEPT_CODE": "16631009",
+              "CONCEPT_ID": 443904,
+              "CONCEPT_NAME": "Transverse myelopathy syndrome",
               "DOMAIN_ID": "Condition",
               "INVALID_REASON": "V",
               "INVALID_REASON_CAPTION": "Valid",
-              "STANDARD_CONCEPT": "N",
-              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
-              "VOCABULARY_ID": "ICD10CM"
-            }
-          },
-          {
-            "concept": {
-              "CONCEPT_CLASS_ID": "7-char billing code",
-              "CONCEPT_CODE": "T78.2XXA",
-              "CONCEPT_ID": 45551446,
-              "CONCEPT_NAME": "Anaphylactic shock, unspecified, initial encounter",
-              "DOMAIN_ID": "Condition",
-              "INVALID_REASON": "V",
-              "INVALID_REASON_CAPTION": "Valid",
-              "STANDARD_CONCEPT": "N",
-              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
-              "VOCABULARY_ID": "ICD10CM"
-            }
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "SNOMED"
+            },
+            "includeDescendants": true
           }
         ]
       }
     },
     {
-      "id": 2,
+      "id": 5,
       "name": "Inpatient or Emergency Room visit",
       "expression": {
         "items": [
@@ -94,7 +81,7 @@
     "CriteriaList": [
       {
         "ConditionOccurrence": {
-          "ConditionSourceConcept": 1
+          "CodesetId": 4
         }
       }
     ],
@@ -112,7 +99,7 @@
       {
         "Criteria": {
           "VisitOccurrence": {
-            "CodesetId": 2
+            "CodesetId": 5
           }
         },
         "StartWindow": {
@@ -152,7 +139,7 @@
   },
   "InclusionRules": [
     {
-      "name": "has no events in prior 'clean window' - 30 days",
+      "name": "has no events in prior 'clean window' - 365 days",
       "expression": {
         "Type": "ALL",
         "CriteriaList": [
@@ -165,7 +152,7 @@
                     {
                       "Criteria": {
                         "VisitOccurrence": {
-                          "CodesetId": 2
+                          "CodesetId": 5
                         }
                       },
                       "StartWindow": {
@@ -197,12 +184,12 @@
                   "DemographicCriteriaList": [],
                   "Groups": []
                 },
-                "ConditionSourceConcept": 1
+                "CodesetId": 4
               }
             },
             "StartWindow": {
               "Start": {
-                "Days": 30,
+                "Days": 365,
                 "Coeff": -1
               },
               "End": {

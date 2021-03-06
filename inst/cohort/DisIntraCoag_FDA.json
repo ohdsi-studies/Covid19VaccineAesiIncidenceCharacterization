@@ -1,142 +1,16 @@
 {
   "ConceptSets": [
     {
-      "id": 3,
-      "name": "Appendicitis FDA ICD10CM source concepts",
+      "id": 4,
+      "name": "Disseminated intravascular coagulation FDA source concepts",
       "expression": {
         "items": [
           {
             "concept": {
-              "CONCEPT_CLASS_ID": "5-char billing code",
-              "CONCEPT_CODE": "K35.21",
-              "CONCEPT_ID": 1595604,
-              "CONCEPT_NAME": "Acute appendicitis with generalized peritonitis, with abscess",
-              "DOMAIN_ID": "Condition",
-              "INVALID_REASON": "V",
-              "INVALID_REASON_CAPTION": "Valid",
-              "STANDARD_CONCEPT": "N",
-              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
-              "VOCABULARY_ID": "ICD10CM"
-            }
-          },
-          {
-            "concept": {
-              "CONCEPT_CLASS_ID": "5-char billing code",
-              "CONCEPT_CODE": "K35.20",
-              "CONCEPT_ID": 1595603,
-              "CONCEPT_NAME": "Acute appendicitis with generalized peritonitis, without abscess",
-              "DOMAIN_ID": "Condition",
-              "INVALID_REASON": "V",
-              "INVALID_REASON_CAPTION": "Valid",
-              "STANDARD_CONCEPT": "N",
-              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
-              "VOCABULARY_ID": "ICD10CM"
-            }
-          },
-          {
-            "concept": {
-              "CONCEPT_CLASS_ID": "5-char billing code",
-              "CONCEPT_CODE": "K35.31",
-              "CONCEPT_ID": 1595606,
-              "CONCEPT_NAME": "Acute appendicitis with localized peritonitis and gangrene, without perforation",
-              "DOMAIN_ID": "Condition",
-              "INVALID_REASON": "V",
-              "INVALID_REASON_CAPTION": "Valid",
-              "STANDARD_CONCEPT": "N",
-              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
-              "VOCABULARY_ID": "ICD10CM"
-            }
-          },
-          {
-            "concept": {
-              "CONCEPT_CLASS_ID": "5-char billing code",
-              "CONCEPT_CODE": "K35.30",
-              "CONCEPT_ID": 1595605,
-              "CONCEPT_NAME": "Acute appendicitis with localized peritonitis, without perforation or gangrene",
-              "DOMAIN_ID": "Condition",
-              "INVALID_REASON": "V",
-              "INVALID_REASON_CAPTION": "Valid",
-              "STANDARD_CONCEPT": "N",
-              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
-              "VOCABULARY_ID": "ICD10CM"
-            }
-          },
-          {
-            "concept": {
-              "CONCEPT_CLASS_ID": "5-char billing code",
-              "CONCEPT_CODE": "K35.33",
-              "CONCEPT_ID": 1595608,
-              "CONCEPT_NAME": "Acute appendicitis with perforation and localized peritonitis, with abscess",
-              "DOMAIN_ID": "Condition",
-              "INVALID_REASON": "V",
-              "INVALID_REASON_CAPTION": "Valid",
-              "STANDARD_CONCEPT": "N",
-              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
-              "VOCABULARY_ID": "ICD10CM"
-            }
-          },
-          {
-            "concept": {
-              "CONCEPT_CLASS_ID": "5-char billing code",
-              "CONCEPT_CODE": "K35.32",
-              "CONCEPT_ID": 1595607,
-              "CONCEPT_NAME": "Acute appendicitis with perforation and localized peritonitis, without abscess",
-              "DOMAIN_ID": "Condition",
-              "INVALID_REASON": "V",
-              "INVALID_REASON_CAPTION": "Valid",
-              "STANDARD_CONCEPT": "N",
-              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
-              "VOCABULARY_ID": "ICD10CM"
-            }
-          },
-          {
-            "concept": {
-              "CONCEPT_CLASS_ID": "6-char billing code",
-              "CONCEPT_CODE": "K35.890",
-              "CONCEPT_ID": 1595609,
-              "CONCEPT_NAME": "Other acute appendicitis without perforation or gangrene",
-              "DOMAIN_ID": "Condition",
-              "INVALID_REASON": "V",
-              "INVALID_REASON_CAPTION": "Valid",
-              "STANDARD_CONCEPT": "N",
-              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
-              "VOCABULARY_ID": "ICD10CM"
-            }
-          },
-          {
-            "concept": {
-              "CONCEPT_CLASS_ID": "6-char billing code",
-              "CONCEPT_CODE": "K35.891",
-              "CONCEPT_ID": 1595610,
-              "CONCEPT_NAME": "Other acute appendicitis without perforation, with gangrene",
-              "DOMAIN_ID": "Condition",
-              "INVALID_REASON": "V",
-              "INVALID_REASON_CAPTION": "Valid",
-              "STANDARD_CONCEPT": "N",
-              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
-              "VOCABULARY_ID": "ICD10CM"
-            }
-          },
-          {
-            "concept": {
-              "CONCEPT_CLASS_ID": "5-char billing code",
-              "CONCEPT_CODE": "K35.80",
-              "CONCEPT_ID": 45538522,
-              "CONCEPT_NAME": "Unspecified acute appendicitis",
-              "DOMAIN_ID": "Condition",
-              "INVALID_REASON": "V",
-              "INVALID_REASON_CAPTION": "Valid",
-              "STANDARD_CONCEPT": "N",
-              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
-              "VOCABULARY_ID": "ICD10CM"
-            }
-          },
-          {
-            "concept": {
               "CONCEPT_CLASS_ID": "3-char billing code",
-              "CONCEPT_CODE": "K37",
-              "CONCEPT_ID": 35208251,
-              "CONCEPT_NAME": "Unspecified appendicitis",
+              "CONCEPT_CODE": "D65",
+              "CONCEPT_ID": 35206758,
+              "CONCEPT_NAME": "Disseminated intravascular coagulation [defibrination syndrome]",
               "DOMAIN_ID": "Condition",
               "INVALID_REASON": "V",
               "INVALID_REASON_CAPTION": "Valid",
@@ -149,7 +23,7 @@
       }
     },
     {
-      "id": 4,
+      "id": 5,
       "name": "Inpatient or Emergency Room visit",
       "expression": {
         "items": [
@@ -206,7 +80,7 @@
     "CriteriaList": [
       {
         "ConditionOccurrence": {
-          "ConditionSourceConcept": 3
+          "ConditionSourceConcept": 4
         }
       }
     ],
@@ -224,7 +98,7 @@
       {
         "Criteria": {
           "VisitOccurrence": {
-            "CodesetId": 4
+            "CodesetId": 5
           }
         },
         "StartWindow": {
@@ -277,7 +151,7 @@
                     {
                       "Criteria": {
                         "VisitOccurrence": {
-                          "CodesetId": 4
+                          "CodesetId": 5
                         }
                       },
                       "StartWindow": {
@@ -309,7 +183,7 @@
                   "DemographicCriteriaList": [],
                   "Groups": []
                 },
-                "ConditionSourceConcept": 3
+                "ConditionSourceConcept": 4
               }
             },
             "StartWindow": {

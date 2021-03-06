@@ -2,43 +2,7 @@
   "ConceptSets": [
     {
       "id": 1,
-      "name": "Anaphylaxis FDA ICD10CM concepts",
-      "expression": {
-        "items": [
-          {
-            "concept": {
-              "CONCEPT_CLASS_ID": "7-char billing code",
-              "CONCEPT_CODE": "T80.52XA",
-              "CONCEPT_ID": 45541800,
-              "CONCEPT_NAME": "Anaphylactic reaction due to vaccination, initial encounter",
-              "DOMAIN_ID": "Condition",
-              "INVALID_REASON": "V",
-              "INVALID_REASON_CAPTION": "Valid",
-              "STANDARD_CONCEPT": "N",
-              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
-              "VOCABULARY_ID": "ICD10CM"
-            }
-          },
-          {
-            "concept": {
-              "CONCEPT_CLASS_ID": "7-char billing code",
-              "CONCEPT_CODE": "T78.2XXA",
-              "CONCEPT_ID": 45551446,
-              "CONCEPT_NAME": "Anaphylactic shock, unspecified, initial encounter",
-              "DOMAIN_ID": "Condition",
-              "INVALID_REASON": "V",
-              "INVALID_REASON_CAPTION": "Valid",
-              "STANDARD_CONCEPT": "N",
-              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
-              "VOCABULARY_ID": "ICD10CM"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "id": 2,
-      "name": "Inpatient or Emergency Room visit",
+      "name": "Inpatient or Inpatient/ER visit",
       "expression": {
         "items": [
           {
@@ -70,19 +34,84 @@
               "VOCABULARY_ID": "Visit"
             },
             "includeDescendants": true
-          },
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "name": "Ischemic stroke ",
+      "expression": {
+        "items": [
           {
             "concept": {
-              "CONCEPT_CLASS_ID": "Visit",
-              "CONCEPT_CODE": "ER",
-              "CONCEPT_ID": 9203,
-              "CONCEPT_NAME": "Emergency Room Visit",
-              "DOMAIN_ID": "Visit",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "CONCEPT_CODE": "20059004",
+              "CONCEPT_ID": 372924,
+              "CONCEPT_NAME": "Cerebral artery occlusion",
+              "DOMAIN_ID": "Condition",
               "INVALID_REASON": "V",
               "INVALID_REASON_CAPTION": "Valid",
               "STANDARD_CONCEPT": "S",
               "STANDARD_CONCEPT_CAPTION": "Standard",
-              "VOCABULARY_ID": "Visit"
+              "VOCABULARY_ID": "SNOMED"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "CONCEPT_CODE": "75543006",
+              "CONCEPT_ID": 375557,
+              "CONCEPT_NAME": "Cerebral embolism",
+              "DOMAIN_ID": "Condition",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "SNOMED"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "CONCEPT_CODE": "432504007",
+              "CONCEPT_ID": 443454,
+              "CONCEPT_NAME": "Cerebral infarction",
+              "DOMAIN_ID": "Condition",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "SNOMED"
+            },
+            "includeDescendants": true
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "CONCEPT_CODE": "71444005",
+              "CONCEPT_ID": 441874,
+              "CONCEPT_NAME": "Cerebral thrombosis",
+              "DOMAIN_ID": "Condition",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "SNOMED"
+            }
+          },
+          {
+            "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "CONCEPT_CODE": "1131000119105",
+              "CONCEPT_ID": 43530623,
+              "CONCEPT_NAME": "Sequela of cerebrovascular accident",
+              "DOMAIN_ID": "Condition",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "SNOMED"
             },
             "includeDescendants": true
           }
@@ -94,7 +123,7 @@
     "CriteriaList": [
       {
         "ConditionOccurrence": {
-          "ConditionSourceConcept": 1
+          "CodesetId": 2
         }
       }
     ],
@@ -112,7 +141,7 @@
       {
         "Criteria": {
           "VisitOccurrence": {
-            "CodesetId": 2
+            "CodesetId": 1
           }
         },
         "StartWindow": {
@@ -152,7 +181,7 @@
   },
   "InclusionRules": [
     {
-      "name": "has no events in prior 'clean window' - 30 days",
+      "name": "has no events in prior 'clean window'",
       "expression": {
         "Type": "ALL",
         "CriteriaList": [
@@ -165,7 +194,7 @@
                     {
                       "Criteria": {
                         "VisitOccurrence": {
-                          "CodesetId": 2
+                          "CodesetId": 1
                         }
                       },
                       "StartWindow": {
@@ -197,12 +226,12 @@
                   "DemographicCriteriaList": [],
                   "Groups": []
                 },
-                "ConditionSourceConcept": 1
+                "CodesetId": 2
               }
             },
             "StartWindow": {
               "Start": {
-                "Days": 30,
+                "Days": 365,
                 "Coeff": -1
               },
               "End": {

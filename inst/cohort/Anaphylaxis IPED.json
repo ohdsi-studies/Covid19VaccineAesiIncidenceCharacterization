@@ -1,43 +1,44 @@
 {
   "ConceptSets": [
     {
-      "id": 1,
-      "name": "Anaphylaxis FDA ICD10CM concepts",
+      "id": 0,
+      "name": "Anaphylaxis or Anaphylactic shock due to serum",
       "expression": {
         "items": [
           {
             "concept": {
-              "CONCEPT_CLASS_ID": "7-char billing code",
-              "CONCEPT_CODE": "T80.52XA",
-              "CONCEPT_ID": 45541800,
-              "CONCEPT_NAME": "Anaphylactic reaction due to vaccination, initial encounter",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "CONCEPT_CODE": "39579001",
+              "CONCEPT_ID": 441202,
+              "CONCEPT_NAME": "Anaphylaxis",
               "DOMAIN_ID": "Condition",
               "INVALID_REASON": "V",
               "INVALID_REASON_CAPTION": "Valid",
-              "STANDARD_CONCEPT": "N",
-              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
-              "VOCABULARY_ID": "ICD10CM"
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "SNOMED"
             }
           },
           {
             "concept": {
-              "CONCEPT_CLASS_ID": "7-char billing code",
-              "CONCEPT_CODE": "T78.2XXA",
-              "CONCEPT_ID": 45551446,
-              "CONCEPT_NAME": "Anaphylactic shock, unspecified, initial encounter",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "CONCEPT_CODE": "213320003",
+              "CONCEPT_ID": 442038,
+              "CONCEPT_NAME": "Anaphylactic shock due to serum",
               "DOMAIN_ID": "Condition",
               "INVALID_REASON": "V",
               "INVALID_REASON_CAPTION": "Valid",
-              "STANDARD_CONCEPT": "N",
-              "STANDARD_CONCEPT_CAPTION": "Non-Standard",
-              "VOCABULARY_ID": "ICD10CM"
-            }
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "SNOMED"
+            },
+            "includeDescendants": true
           }
         ]
       }
     },
     {
-      "id": 2,
+      "id": 1,
       "name": "Inpatient or Emergency Room visit",
       "expression": {
         "items": [
@@ -94,7 +95,7 @@
     "CriteriaList": [
       {
         "ConditionOccurrence": {
-          "ConditionSourceConcept": 1
+          "CodesetId": 0
         }
       }
     ],
@@ -112,7 +113,7 @@
       {
         "Criteria": {
           "VisitOccurrence": {
-            "CodesetId": 2
+            "CodesetId": 1
           }
         },
         "StartWindow": {
@@ -165,7 +166,7 @@
                     {
                       "Criteria": {
                         "VisitOccurrence": {
-                          "CodesetId": 2
+                          "CodesetId": 1
                         }
                       },
                       "StartWindow": {
@@ -197,7 +198,7 @@
                   "DemographicCriteriaList": [],
                   "Groups": []
                 },
-                "ConditionSourceConcept": 1
+                "CodesetId": 0
               }
             },
             "StartWindow": {
