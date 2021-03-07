@@ -3,7 +3,7 @@
 runStudy <- function(connectionDetails = NULL,
                      connection = NULL,
                      cdmDatabaseSchema,
-                     oracleTempSchema = NULL,
+                     tempEmulationSchema = NULL,
                      cohortDatabaseSchema,
                      cohortTablePrefix = "AESI",
                      targetCohortTable = paste0(cohortTablePrefix, "_target"),
@@ -69,7 +69,7 @@ runStudy <- function(connectionDetails = NULL,
   createRefTablesSql <- SqlRender::loadRenderTranslateSql("CreateRefTables.sql",
                                     packageName = getThisPackageName(),
                                     dbms = connection@dbms,
-                                    oracleTempSchema = oracleTempSchema,
+                                    tempEmulationSchema = tempEmulationSchema,
                                     warnOnMissingParameters = TRUE,
                                     cohort_database_schema = cohortDatabaseSchema,
                                     summary_table = summaryTable,
@@ -98,7 +98,7 @@ runStudy <- function(connectionDetails = NULL,
     instantiatedTargetCohortIds <- instantiateCohortSet(connectionDetails = connectionDetails,
                                                         connection = connection,
                                                         cdmDatabaseSchema = cdmDatabaseSchema,
-                                                        oracleTempSchema = oracleTempSchema,
+                                                        tempEmulationSchema = tempEmulationSchema,
                                                         cohortDatabaseSchema = cohortDatabaseSchema,
                                                         cohortTable = targetCohortTable,
                                                         cohorts = targetCohorts,
@@ -132,7 +132,7 @@ runStudy <- function(connectionDetails = NULL,
     instantiateCohortSet(connectionDetails = connectionDetails,
                          connection = connection,
                          cdmDatabaseSchema = cdmDatabaseSchema,
-                         oracleTempSchema = oracleTempSchema,
+                         tempEmulationSchema = tempEmulationSchema,
                          cohortDatabaseSchema = cohortDatabaseSchema,
                          cohortTable = subgroupCohortTable,
                          cohorts = subgroupCohorts,
@@ -156,7 +156,7 @@ runStudy <- function(connectionDetails = NULL,
     instantiateCohortSet(connectionDetails = connectionDetails,
                          connection = connection,
                          cdmDatabaseSchema = cdmDatabaseSchema,
-                         oracleTempSchema = oracleTempSchema,
+                         tempEmulationSchema = tempEmulationSchema,
                          cohortDatabaseSchema = cohortDatabaseSchema,
                          cohortTable = outcomeCohortTable,
                          cohorts = outcomeCohortsToCreate,
@@ -205,7 +205,7 @@ runStudy <- function(connectionDetails = NULL,
   ParallelLogger::logInfo("**********************************************************")
   computeAndExportIncidenceAnalysis(connection,
                                     exportFolder,
-                                    oracleTempSchema, 
+                                    tempEmulationSchema, 
                                     cdmDatabaseSchema, 
                                     cohortDatabaseSchema,
                                     targetCohortTable,
@@ -224,13 +224,13 @@ runStudy <- function(connectionDetails = NULL,
   ParallelLogger::logInfo("Saving database metadata")
   op <- getObservationPeriodDateRange(connection,
                                       cdmDatabaseSchema = cdmDatabaseSchema,
-                                      oracleTempSchema = oracleTempSchema)
+                                      tempEmulationSchema = tempEmulationSchema)
   database <- data.frame(databaseId = databaseId,
                          databaseName = databaseName,
                          description = databaseDescription,
                          vocabularyVersion = getVocabularyInfo(connection = connection,
                                                                cdmDatabaseSchema = cdmDatabaseSchema,
-                                                               oracleTempSchema = oracleTempSchema),
+                                                               tempEmulationSchema = tempEmulationSchema),
                          minObsPeriodDate = op$minObsPeriodDate,
                          maxObsPeriodDate = op$maxObsPeriodDate,
                          isMetaAnalysis = 0)
@@ -272,7 +272,7 @@ runStudy <- function(connectionDetails = NULL,
 
 computeAndExportIncidenceAnalysis <- function(connection, 
                                               exportFolder,
-                                              oracleTempSchema, 
+                                              tempEmulationSchema, 
                                               cdmDatabaseSchema, 
                                               cohortDatabaseSchema,
                                               targetCohortTable,
@@ -303,7 +303,7 @@ computeAndExportIncidenceAnalysis <- function(connection,
     runIncidenceAnalysisSql <- SqlRender::loadRenderTranslateSql("runIncidenceAnalysis.sql",
                                                                  packageName = getThisPackageName(),
                                                                  dbms = connection@dbms,
-                                                                 oracleTempSchema = oracleTempSchema,
+                                                                 tempEmulationSchema = tempEmulationSchema,
                                                                  warnOnMissingParameters = TRUE,
                                                                  cdm_database_schema = cdmDatabaseSchema,
                                                                  cohort_database_schema = cohortDatabaseSchema,
@@ -331,7 +331,7 @@ computeAndExportIncidenceAnalysis <- function(connection,
   getIncidenceAnalysisSql <- SqlRender::loadRenderTranslateSql("GetIncidenceAnalysisResults.sql",
                                                                packageName = getThisPackageName(),
                                                                dbms = connection@dbms,
-                                                               oracleTempSchema = oracleTempSchema,
+                                                               tempEmulationSchema = tempEmulationSchema,
                                                                warnOnMissingParameters = TRUE,
                                                                cohort_database_schema = cohortDatabaseSchema,
                                                                summary_table = summaryTable)
@@ -353,11 +353,11 @@ computeAndExportIncidenceAnalysis <- function(connection,
   writeToCsv(results, file.path(exportFolder, "incidence_analysis.csv"))
 }
 
-insertRefEntries <- function(connection, sqlFile, cohortDatabaseSchema, tableName, oracleTempSchema, ...) {
+insertRefEntries <- function(connection, sqlFile, cohortDatabaseSchema, tableName, tempEmulationSchema, ...) {
   sql <- SqlRender::loadRenderTranslateSql(sqlFile,
                                            packageName = getThisPackageName(),
                                            dbms = connection@dbms,
-                                           oracleTempSchema = oracleTempSchema,
+                                           tempEmulationSchema = tempEmulationSchema,
                                            warnOnMissingParameters = TRUE,
                                            cohort_database_schema = cohortDatabaseSchema,
                                            ref_table = tableName,
@@ -377,22 +377,22 @@ zipResults <- function(exportFolder, databaseId) {
   return(zipName)
 }
 
-getVocabularyInfo <- function(connection, cdmDatabaseSchema, oracleTempSchema) {
+getVocabularyInfo <- function(connection, cdmDatabaseSchema, tempEmulationSchema) {
   sql <- "SELECT vocabulary_version FROM @cdm_database_schema.vocabulary WHERE vocabulary_id = 'None';"
   sql <- SqlRender::render(sql, cdm_database_schema = cdmDatabaseSchema)
   sql <- SqlRender::translate(sql,
                               targetDialect = attr(connection, "dbms"),
-                              oracleTempSchema = oracleTempSchema)
+                              tempEmulationSchema = tempEmulationSchema)
   vocabInfo <- DatabaseConnector::querySql(connection, sql)
   return(vocabInfo[[1]])
 }
 
-getObservationPeriodDateRange <- function(connection, cdmDatabaseSchema, oracleTempSchema) {
+getObservationPeriodDateRange <- function(connection, cdmDatabaseSchema, tempEmulationSchema) {
   sql <- "SELECT MIN(observation_period_start_date) min_obs_period_date, MAX(observation_period_end_date) max_obs_period_date FROM @cdm_database_schema.observation_period;"
   sql <- SqlRender::render(sql, cdm_database_schema = cdmDatabaseSchema)
   sql <- SqlRender::translate(sql,
                               targetDialect = attr(connection, "dbms"),
-                              oracleTempSchema = oracleTempSchema)
+                              tempEmulationSchema = tempEmulationSchema)
   op <- DatabaseConnector::querySql(connection, sql)
   names(op) <- SqlRender::snakeCaseToCamelCase(names(op))
   return(op)

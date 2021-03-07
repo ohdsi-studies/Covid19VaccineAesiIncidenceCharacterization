@@ -72,7 +72,7 @@ createCohortTable <- function(connectionDetails = NULL,
 #'
 #' @template CohortTable
 #'
-#' @template OracleTempSchema
+#' @template TempEmulationSchema
 #'
 #' @template CdmDatabaseSchema
 #'
@@ -95,7 +95,7 @@ createCohortTable <- function(connectionDetails = NULL,
 instantiateCohortSet <- function(connectionDetails = NULL,
                                  connection = NULL,
                                  cdmDatabaseSchema,
-                                 oracleTempSchema = NULL,
+                                 tempEmulationSchema = NULL,
                                  cohortDatabaseSchema = cdmDatabaseSchema,
                                  cohortTable = "cohort",
                                  cohorts = NULL,
@@ -176,7 +176,7 @@ instantiateCohortSet <- function(connectionDetails = NULL,
                                warnOnMissingParameters = FALSE)
       sql <- SqlRender::translate(sql,
                                   targetDialect = connectionDetails$dbms,
-                                  oracleTempSchema = oracleTempSchema)
+                                  tempEmulationSchema = tempEmulationSchema)
       DatabaseConnector::executeSql(connection, sql)
       instantiatedCohortIds <- c(instantiatedCohortIds, cohorts$cohortId[i])
       if (incremental) {

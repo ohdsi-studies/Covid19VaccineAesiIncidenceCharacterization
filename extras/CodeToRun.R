@@ -16,8 +16,8 @@ server <- Sys.getenv("DB_SERVER")
 port <- Sys.getenv("DB_PORT")
 extraSettings <- if (Sys.getenv("DB_EXTRA_SETTINGS") == "") NULL else Sys.getenv("DB_EXTRA_SETTINGS")
 
-# For Oracle: define a schema that can be used to emulate temp tables:
-oracleTempSchema <- NULL
+# Define a schema that can be used to emulate temp tables:
+tempEmulationSchema <- NULL
 
 if (!is.null(connectionString)) {
   connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = dbms,
@@ -74,7 +74,7 @@ runStudy(connectionDetails = connectionDetails,
          cdmDatabaseSchema = cdmDatabaseSchema,
          cohortDatabaseSchema = cohortDatabaseSchema,
          cohortTablePrefix = cohortTablePrefix,
-         oracleTempSchema = cohortDatabaseSchema,
+         tempEmulationSchema = cohortDatabaseSchema,
          exportFolder = outputFolder,
          databaseId = databaseId,
          databaseName = databaseName,

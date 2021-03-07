@@ -8,7 +8,7 @@ instantiateCohortSet(
   connectionDetails = NULL,
   connection = NULL,
   cdmDatabaseSchema,
-  oracleTempSchema = NULL,
+  tempEmulationSchema = NULL,
   cohortDatabaseSchema = cdmDatabaseSchema,
   cohortTable = "cohort",
   cohorts = NULL,
@@ -35,8 +35,7 @@ of the function, and closed when the function finishes.}
 Note that for SQL Server, this should include both the database and
 schema name, for example 'cdm_data.dbo'.}
 
-\item{oracleTempSchema}{Should be used in Oracle to specify a schema where the user has write
-privileges for storing temporary tables.}
+\item{tempEmulationSchema}{Should be used in emulate a temporary schema.}
 
 \item{cohortDatabaseSchema}{Schema name where your cohort table resides. Note that for SQL Server,
 this should include both the database and schema name, for example
