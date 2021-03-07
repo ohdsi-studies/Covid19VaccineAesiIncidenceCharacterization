@@ -32,45 +32,45 @@ pkgdown::build_site()
 # Establish the analysis settings json
 #1: impact of population characteristics
 analysis1 <- list(name = "impact of population characteristics",
-                  targetIds = list(104, 105, 106, 107),
+                  targetIds = list(104, 105, 106, 107, 126),
                   subgroupIds = list(1, 2, 21, 22, 31, 32, 41, 42, 51, 52, 61, 62, 71, 72, 81, 82, 91, 92),
                   timeAtRiskIds = list(5),
-                  outcomeIds = list(312, 303, 323, 307, 332, 321, 301, 302, 308, 304, 324, 326, 314, 319, 310, 316, 318))
+                  outcomeIds = list(312, 303, 323, 307, 332, 321, 301, 302, 308, 305, 324, 326, 314, 319, 310, 316, 318))
 
 #2: "Impact of anchoring (and future severity of illness)"
 analysis2 <- list(name = "Impact of anchoring (and future severity of illness)",
                   targetIds = list(108, 109, 110, 111, 112, 113, 114),
                   subgroupIds = list(21, 22, 31, 32, 41, 42, 51, 52, 61, 62, 71, 72, 81, 82, 91, 92),
                   timeAtRiskIds = list(1, 2, 3, 4, 5),
-                  outcomeIds = list(312, 303, 323, 307, 332, 321, 301, 302, 308, 304, 324, 326, 314, 319, 310, 316, 318))
+                  outcomeIds = list(312, 303, 323, 307, 332, 321, 301, 302, 308, 305, 324, 326, 314, 319, 310, 316, 318))
 
 #3: "Impact of seasonal trends and COVID"
 analysis3 <- list(name = "Impact of seasonal trends and COVID",
                   targetIds = list(104, 115, 116, 117, 118, 119, 120, 121),
                   subgroupIds = list(21, 22, 31, 32, 41, 42, 51, 52, 61, 62, 71, 72, 81, 82, 91, 92),
                   timeAtRiskIds = list(4),
-                  outcomeIds = list(312, 303, 323, 307, 332, 321, 301, 302, 308, 304, 324, 326, 314, 319, 310, 316, 318))
+                  outcomeIds = list(312, 303, 323, 307, 332, 321, 301, 302, 308, 305, 324, 326, 314, 319, 310, 316, 318))
 
 #4: Impact of secular trends
 analysis4 <- list(name = "Impact of secular trends",
                   targetIds = list(122, 123, 124),
                   subgroupIds = list(21, 22, 31, 32, 41, 42, 51, 52, 61, 62, 71, 72, 81, 82, 91, 92),
                   timeAtRiskIds = list(5),
-                  outcomeIds = list(312, 303, 323, 307, 332, 321, 301, 302, 308, 304, 324, 326, 314, 319, 310, 316, 318))
+                  outcomeIds = list(312, 303, 323, 307, 332, 321, 301, 302, 308, 305, 324, 326, 314, 319, 310, 316, 318))
 
 #5: Impact of prior observation period
 analysis5 <- list(name = "Impact of prior observation period",
                   targetIds = list(125),
                   subgroupIds = list(21, 22, 31, 32, 41, 42, 51, 52, 61, 62, 71, 72, 81, 82, 91, 92),
                   timeAtRiskIds = list(5),
-                  outcomeIds = list(312, 303, 323, 307, 332, 321, 301, 302, 308, 304, 324, 326, 314, 319, 310, 316, 318))
+                  outcomeIds = list(312, 303, 323, 307, 332, 321, 301, 302, 308, 305, 324, 326, 314, 319, 310, 316, 318))
 
 #6: Impact of phenotype definition and outcome clean window
 analysis6 <- list(name = "Impact of phenotype definition and outcome clean window",
                   targetIds = list(104),
                   subgroupIds = list(21, 22, 31, 32, 41, 42, 51, 52, 61, 62, 71, 72, 81, 82, 91, 92),
                   timeAtRiskIds = list(5),
-                  outcomeIds = list(313, 327, 345, 328, 346, 322, 329, 347, 330, 348, 315, 331, 333, 349, 320, 334, 350, 351, 352, 335, 337, 353, 309, 338, 354, 305, 306, 355, 325, 339, 356, 340, 357, 341, 358, 359, 311, 342, 360, 343, 344, 361, 317, 362))
+                  outcomeIds = list(313, 327, 345, 328, 346, 363, 322, 329, 347, 330, 348, 315, 331, 333, 349, 320, 334, 350, 351, 352, 335, 337, 353, 309, 338, 354, 304, 306, 355, 325, 339, 356, 340, 357, 341, 358, 359, 311, 364, 342, 360, 343, 344, 361, 317, 362))
 
 analysisList = list(analysisList = list(analysis1, analysis2, analysis3, analysis4, analysis5, analysis6))
 analysisListJson <- RJSONIO::toJSON(analysisList, pretty = T)

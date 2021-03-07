@@ -10,7 +10,7 @@ Calculating the background rates of adverse events of special interest (AESI) fo
 - Study lead forums tag: **[Patrick_Ryan](https://forums.ohdsi.org/u/[Patrick_Ryan])**
 - Study start date: **-**
 - Study end date: **-**
-- Protocol: [**pdf file**](https://github.com/ohdsi-studies/Covid19VaccineAesiIncidenceCharacterization/blob/master/extras/Vaccine_safety_sensitivity_protocol.pdf)
+- Protocol: [**pdf file**](extras/Vaccine_safety_sensitivity_protocol.pdf)
 - Publications: **-**
 - Results explorer: **-**
 
