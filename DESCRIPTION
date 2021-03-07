@@ -1,7 +1,7 @@
 Package: Covid19VaccineAesiIncidenceCharacterization
 Type: Package
 Title: COVID-19 Vaccine AESI Incidence Characterization
-Version: 0.1.0
+Version: 1.0.0
 Authors@R: c(
 	person("Anthony", "Sena", , "asena5@its.jnj.com", role = c("aut", "cre")),
 	person("Patick", "Ryan", role = c("aut"))
@@ -11,10 +11,10 @@ Description: COVID-19 Vaccine AESI Incidence Characterization
 License: file LICENSE
 VignetteBuilder: knitr
 Depends:
-  DatabaseConnector (>= 3.0.0)
+  DatabaseConnector (>= 4.0.0)
 Imports:
   ParallelLogger (>= 2.0.1),
-  SqlRender (>= 1.6.6),
+  SqlRender (>= 1.7.0),
   digest,
   readr,
   magrittr,

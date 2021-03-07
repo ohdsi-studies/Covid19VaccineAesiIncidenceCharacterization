@@ -124,6 +124,7 @@ for(i in 1:length(analysisListFromFile$analysisList)) {
 
 # Store environment in which the study was executed -----------------------
 OhdsiRTools::insertEnvironmentSnapshotInPackage("Covid19VaccineAesiIncidenceCharacterization")
+OhdsiRTools::createRenvLockFile(rootPackage = "Covid19VaccineAesiIncidenceCharacterization")
 
 # Check all files for UTF-8 Encoding and ensure there are no non-ASCII characters
 OhdsiRTools::findNonAsciiStringsInFolder()

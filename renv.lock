@@ -11,7 +11,7 @@
 	"Packages" : {
 		"rlang" : {
 			"Package" : "rlang",
-			"Version" : "0.4.9",
+			"Version" : "0.4.10",
 			"Source" : "Repository",
 			"Repository" : "CRAN"
 		},
@@ -87,6 +87,12 @@
 			"Source" : "Repository",
 			"Repository" : "CRAN"
 		},
+		"bit" : {
+			"Package" : "bit",
+			"Version" : "4.0.4",
+			"Source" : "Repository",
+			"Repository" : "CRAN"
+		},
 		"pillar" : {
 			"Package" : "pillar",
 			"Version" : "1.4.7",
@@ -129,6 +135,12 @@
 			"Source" : "Repository",
 			"Repository" : "CRAN"
 		},
+		"bit64" : {
+			"Package" : "bit64",
+			"Version" : "4.0.5",
+			"Source" : "Repository",
+			"Repository" : "CRAN"
+		},
 		"clipr" : {
 			"Package" : "clipr",
 			"Version" : "0.7.1",
@@ -144,12 +156,6 @@
 		"cpp11" : {
 			"Package" : "cpp11",
 			"Version" : "0.2.4",
-			"Source" : "Repository",
-			"Repository" : "CRAN"
-		},
-		"DatabaseConnectorJars" : {
-			"Package" : "DatabaseConnectorJars",
-			"Version" : "1.1.0",
 			"Source" : "Repository",
 			"Repository" : "CRAN"
 		},
@@ -197,7 +203,7 @@
 		},
 		"SqlRender" : {
 			"Package" : "SqlRender",
-			"Version" : "1.6.8",
+			"Version" : "1.7.0",
 			"Source" : "Repository",
 			"Repository" : "CRAN"
 		},
@@ -239,7 +245,7 @@
 		},
 		"DatabaseConnector" : {
 			"Package" : "DatabaseConnector",
-			"Version" : "3.0.0",
+			"Version" : "4.0.0",
 			"Source" : "Repository",
 			"Repository" : "CRAN"
 		},
@@ -287,13 +293,13 @@
 		},
 		"Covid19VaccineAesiIncidenceCharacterization" : {
 			"Package" : "Covid19VaccineAesiIncidenceCharacterization",
-			"Version" : "0.0.4",
+			"Version" : "1.0.0",
 			"Source" : "GitHub",
 			"RemoteType" : "github",
 			"RemoteHost" : "api.github.com",
 			"RemoteRepo" : "Covid19VaccineAesiIncidenceCharacterization",
 			"RemoteUsername" : "ohdsi-studies",
-			"RemoteRef" : "master"
+			"RemoteRef" : "study-update"
 		}
 	}
 }
