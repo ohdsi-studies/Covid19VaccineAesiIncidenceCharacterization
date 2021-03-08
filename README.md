@@ -1,7 +1,7 @@
 Calculating the background rates of adverse events of special interest (AESI) for the COVID vaccines
 =============
 
-<img src="https://img.shields.io/badge/Study%20Status-Started-blue.svg" alt="Study Status: Started">
+<img src="https://img.shields.io/badge/Study%20Status-Design%20Finalized-brightgreen.svg" alt="Study Status: Design Finalized">
 
 - Analytics use case(s): Characterization
 - Study type: Clinical Application
