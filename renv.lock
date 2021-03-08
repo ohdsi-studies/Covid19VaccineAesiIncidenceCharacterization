@@ -299,7 +299,7 @@
 			"RemoteHost" : "api.github.com",
 			"RemoteRepo" : "Covid19VaccineAesiIncidenceCharacterization",
 			"RemoteUsername" : "ohdsi-studies",
-			"RemoteRef" : "study-update"
+			"RemoteRef" : "master"
 		}
 	}
 }

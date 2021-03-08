@@ -11,7 +11,7 @@ The script below is an example to use for setting up your environment. There are
 
 ## Package setup considerations
 
-- We will use `renv` to install the R package dependencies. You should refer to the [renv cache](https://rstudio.github.io/renv/articles/renv.html#cache) section to review how these files are stored for your operating system. If you need/want to change the default storage for your R packages, you will need to set the R `RENV_PATHS_ROOT` environment variable to different path.
+- We will use `renv` to install the R package dependencies. You should refer to the [renv paths](https://rstudio.github.io/renv/reference/paths.html) section to review how these files are stored for your operating system. If you need/want to change the default storage for your R packages, you will need to set the R `RENV_PATHS_ROOT` environment variable to different path. **NOTE**: For those running on Windows, it is highly recommended to update this value to ensure `renv` is using a path that is not in a protected file location (i.e. `C:/Users/..`)
 - If you plan to run this package in an environment without Internet access, you should set the `RENV_PATHS_CACHE` to the `projectRootFolder` so that you can copy the contents of the `projectRootFolder` to the machine with access to your CDM to run the study. Additionally, you will want to make sure you download the `renv.lock` file from the computer with Internet access.
 
 ## Package setup steps
@@ -19,7 +19,7 @@ The script below is an example to use for setting up your environment. There are
 The setup script below is used to install the **Covid19VaccineAesiIncidenceCharacterization** package. You will need to modify this setup script as follows:
 
 - Set the `projectRootFolder` variable to the directory specific to your environment. In this example we are using `E:/Covid19VaccineAesiIncidenceCharacterization`. This root folder will serve a few purposes:
-    - It will hold the R depdencies in subfolders in this directory.
+    - It will hold the R dependencies in subfolders in this directory.
     - It should be used to hold the output of running the study package.
 - If you need to change the default location where `renv` will install the R package dependencies, uncomment out the line: `Sys.setenv("RENV_PATHS_ROOT"="E:\renv")` and replace `"E:\renv"` with your directory of choice.
 - If you plan to run the package in an environment where there is no Internet access, uncomment out the line: `Sys.setenv("RENV_PATHS_CACHE"=projectFolder)`. This will ensure that all of the R package dependencies are copied to the `projectRootFolder`.
@@ -49,8 +49,9 @@ download.file("https://raw.githubusercontent.com/ohdsi-studies/Covid19VaccineAes
 #------------------------------------------------------------------
 # OPTIONAL: If you want to change where renv stores the 
 # R packages you can specify the RENV_PATHS_ROOT. Please
-# refer to https://rstudio.github.io/renv/articles/renv.html#cache
-# for more details
+# refer to https://rstudio.github.io/renv/reference/paths.html
+# for more details. NOTE: For Windows, it is **highly** recommended
+# to update this to a path outside of the default User directory.
 #------------------------------------------------------------------
 #Sys.setenv("RENV_PATHS_ROOT"="E:\renv")
 
@@ -112,7 +113,7 @@ You can also browse the package documentation online at https://rstudio.github.i
 You can safely continue by pressing 'y' after this prompt since the renv.lock file is downloaded from the **Covid19VaccineAesiIncidenceCharacterization** GitHub code repository. Once the installation is complete, you may need to restart R (if you are working outside of RStudio) and you should see this message:
 
 ````
-Project 'E:/Covid19VaccineAesiIncidenceCharacterization' loaded. [renv 0.11.0]
+Project 'E:/Covid19VaccineAesiIncidenceCharacterization' loaded. [renv 0.13.0]
 ````
 
 Now the study package is installed and ready to execute! See the [study execution guide](STUDY-EXECUTION.md) for steps to run the package.
