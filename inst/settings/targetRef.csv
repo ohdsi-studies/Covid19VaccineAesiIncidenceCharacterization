@@ -25,3 +25,4 @@ cohortId,cohortName,fileName
 124,persons at risk at 1JAN 2019 with >=365d prior observation,1JAN 2019.sql
 125,persons at risk at start of year 2017-2019 with <365d prior observation,1JAN_2017-19_wo_pr_obs.sql
 126,persons at risk at start of year 2017-2019 with >=365d prior observation AND pregnant episode covering index (pregnancy start < 1JAN and pregnancy end >=1JAN),1JAN 2017-2019 pregnant.sql
+127,persons at risk at 1APR 2017-2019 with >=365d prior observation with >=1 visit in next year index 1APR,1APR 2017-2019 w visit.sql
