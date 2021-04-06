@@ -7,3 +7,7 @@ time_at_risk_id,time_at_risk_start_offset,time_at_risk_start_index,time_at_risk_
 6,0,0,0,0
 7,1,0,1,0
 8,2,0,2,0
+9,0,0,28,0
+10,0,0,42,0
+11,0,0,90,0
+12,0,0,365,0
