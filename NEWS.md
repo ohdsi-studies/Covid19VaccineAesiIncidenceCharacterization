@@ -1,3 +1,9 @@
+Covid19VaccineAesiIncidenceCharacterization 1.1.1
+==================
+
+1. Fixes SQL scripts to use DATEFROMPARTS for compatibility with all SqlRender supported DB platforms.
+2. Updated instructions and README to use shorter project file path.
+
 Covid19VaccineAesiIncidenceCharacterization 1.1.0
 ==================
 
