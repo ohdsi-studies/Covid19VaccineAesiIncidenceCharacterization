@@ -33,8 +33,8 @@ from
   		  from @cdm_database_schema.procedure_occurrence po1
   		  inner join #well_visit_procs wp1
   		  on po1.procedure_concept_id = wp1.concept_id 
-  		  where procedure_date >= '1/1/2017'
-  		  and procedure_date < '1/1/2018'
+  		  where procedure_date >= DATEFROMPARTS(2017, 1, 1)
+  		  and procedure_date < DATEFROMPARTS(2018, 1, 1)
   	) t1
   	where rn1 = 1
   ) t2
@@ -60,8 +60,8 @@ from
   		  from @cdm_database_schema.procedure_occurrence po1
   		  inner join #well_visit_procs wp1
   		  on po1.procedure_concept_id = wp1.concept_id 
-  		  where procedure_date >= '1/1/2018'
-  		  and procedure_date < '1/1/2019'
+  		  where procedure_date >= DATEFROMPARTS(2018, 1, 1)
+  		  and procedure_date < DATEFROMPARTS(2019, 1, 1)
   	) t1
   	where rn1 = 1
   ) t2
@@ -88,8 +88,8 @@ from
   		  from @cdm_database_schema.procedure_occurrence po1
   		  inner join #well_visit_procs wp1
   		  on po1.procedure_concept_id = wp1.concept_id 
-  		  where procedure_date >= '1/1/2019'
-  		  and procedure_date < '1/1/2020'
+  		  where procedure_date >= DATEFROMPARTS(2019, 1, 1)
+  		  and procedure_date < DATEFROMPARTS(2020, 1, 1)
   	) t1
   	where rn1 = 1
   ) t2

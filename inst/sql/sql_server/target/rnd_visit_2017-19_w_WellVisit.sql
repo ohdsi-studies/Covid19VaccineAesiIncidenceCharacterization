@@ -30,8 +30,8 @@ from
   		  from @cdm_database_schema.procedure_occurrence po1
   		  inner join #well_visit_procs wp1
   		  on po1.procedure_concept_id = wp1.concept_id 
-  		  where procedure_date >= '1/1/2017'
-  		  and procedure_date < '1/1/2018'
+  		  where procedure_date >= DATEFROMPARTS(2017, 1, 1)
+  		  and procedure_date < DATEFROMPARTS(2018, 1, 1)
   ) t1
   on t0.subject_id = t1.person_id
   inner join
@@ -41,8 +41,8 @@ from
 	(
 	select person_id, row_number() over (partition by person_id order by newid()) as rn1, visit_start_date
 		  from @cdm_database_schema.visit_occurrence
-		  where visit_start_date >= '1/1/2017'
-		  and visit_start_date < '1/1/2018'
+		  where visit_start_date >= DATEFROMPARTS(2017, 1, 1)
+		  and visit_start_date < DATEFROMPARTS(2018, 1, 1)
 	) t
 	where rn1 = 1
   ) t2
@@ -65,8 +65,8 @@ from
   		  from @cdm_database_schema.procedure_occurrence po1
   		  inner join #well_visit_procs wp1
   		  on po1.procedure_concept_id = wp1.concept_id 
-  		  where procedure_date >= '1/1/2018'
-  		  and procedure_date < '1/1/2019'
+  		  where procedure_date >= DATEFROMPARTS(2018, 1, 1)
+  		  and procedure_date < DATEFROMPARTS(2019, 1, 1)
   ) t1
   on t0.subject_id = t1.person_id
   inner join
@@ -76,8 +76,8 @@ from
 	(
 	select person_id, row_number() over (partition by person_id order by newid()) as rn1, visit_start_date
 		  from @cdm_database_schema.visit_occurrence
-		  where visit_start_date >= '1/1/2018'
-		  and visit_start_date < '1/1/2019'
+		  where visit_start_date >= DATEFROMPARTS(2018, 1, 1)
+		  and visit_start_date < DATEFROMPARTS(2019, 1, 1)
 	) t
 	where rn1 = 1
   ) t2
@@ -101,8 +101,8 @@ from
   		  from @cdm_database_schema.procedure_occurrence po1
   		  inner join #well_visit_procs wp1
   		  on po1.procedure_concept_id = wp1.concept_id 
-  		  where procedure_date >= '1/1/2019'
-  		  and procedure_date < '1/1/2020'
+  		  where procedure_date >= DATEFROMPARTS(2019, 1, 1)
+  		  and procedure_date < DATEFROMPARTS(2020, 1, 1)
   ) t1
   on t0.subject_id = t1.person_id
   inner join
@@ -112,8 +112,8 @@ from
 	(
 	select person_id, row_number() over (partition by person_id order by newid()) as rn1, visit_start_date
 		  from @cdm_database_schema.visit_occurrence
-		  where visit_start_date >= '1/1/2019'
-		  and visit_start_date < '1/1/2020'
+		  where visit_start_date >= DATEFROMPARTS(2019, 1, 1)
+		  and visit_start_date < DATEFROMPARTS(2020, 1, 1)
 	) t
 	where rn1 = 1
   ) t2

@@ -19,8 +19,8 @@ from
   	(
   	   select person_id, row_number() over (partition by person_id order by newid()) as rn1, visit_start_date
   		  from @cdm_database_schema.visit_occurrence
-  		  where visit_start_date >= '1/1/2017'
-  		  and visit_start_date < '1/1/2018'
+  		  where visit_start_date >= DATEFROMPARTS(2017, 1, 1)
+  		  and visit_start_date < DATEFROMPARTS(2018, 1, 1)
   	) t1
   	where rn1 = 1
   ) t2
@@ -44,8 +44,8 @@ from
   	(
   	   select person_id, row_number() over (partition by person_id order by newid()) as rn1, visit_start_date
   		  from @cdm_database_schema.visit_occurrence
-  		  where visit_start_date >= '1/1/2018'
-  		  and visit_start_date < '1/1/2019'
+  		  where visit_start_date >= DATEFROMPARTS(2018, 1, 1)
+  		  and visit_start_date < DATEFROMPARTS(2019, 1, 1)
   	) t1
   	where rn1 = 1
   ) t2
@@ -70,8 +70,8 @@ from
   	(
   	   select person_id, row_number() over (partition by person_id order by newid()) as rn1, visit_start_date
   		  from @cdm_database_schema.visit_occurrence
-  		  where visit_start_date >= '1/1/2019'
-  		  and visit_start_date < '1/1/2020'
+  		  where visit_start_date >= DATEFROMPARTS(2019, 1, 1)
+  		  and visit_start_date < DATEFROMPARTS(2020, 1, 1)
   	) t1
   	where rn1 = 1
   ) t2

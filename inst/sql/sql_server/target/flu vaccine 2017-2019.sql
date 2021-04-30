@@ -30,8 +30,8 @@ from
   		  from @cdm_database_schema.drug_exposure de1
   		  inner join #flu_vaccines wp1
   		  on de1.drug_concept_id = wp1.concept_id 
-  		  where drug_exposure_start_date >= '1/1/2017'
-  		  and drug_exposure_start_date < '1/1/2018'
+  		  where drug_exposure_start_date >= DATEFROMPARTS(2017, 1, 1)
+  		  and drug_exposure_start_date < DATEFROMPARTS(2018, 1, 1)
   		  group by de1.person_id
   ) t1
   on t0.subject_id = t1.person_id  
@@ -53,8 +53,8 @@ from
   		  from @cdm_database_schema.drug_exposure de1
   		  inner join #flu_vaccines wp1
   		  on de1.drug_concept_id = wp1.concept_id 
-  		  where drug_exposure_start_date >= '1/1/2018'
-  		  and drug_exposure_start_date < '1/1/2019'
+  		  where drug_exposure_start_date >= DATEFROMPARTS(2018, 1, 1)
+  		  and drug_exposure_start_date < DATEFROMPARTS(2019, 1, 1)
   		  group by de1.person_id
   ) t1
   on t0.subject_id = t1.person_id   
@@ -77,8 +77,8 @@ from
   		  from @cdm_database_schema.drug_exposure de1
   		  inner join #flu_vaccines wp1
   		  on de1.drug_concept_id = wp1.concept_id 
-  		  where drug_exposure_start_date >= '1/1/2019'
-  		  and drug_exposure_start_date < '1/1/2020'
+  		  where drug_exposure_start_date >= DATEFROMPARTS(2019, 1, 1)
+  		  and drug_exposure_start_date < DATEFROMPARTS(2020, 1, 1)
   		  group by de1.person_id
   ) t1
   on t0.subject_id = t1.person_id   
