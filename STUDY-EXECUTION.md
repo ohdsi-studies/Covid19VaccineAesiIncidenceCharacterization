@@ -97,7 +97,7 @@ minCellCount <- 5
 
 ````
 # Set the folder for holding the study output
-projectRootFolder <- "E:/Covid19VaccineAesiIncidenceCharacterization"
+projectRootFolder <- "E:/AESI"
 outputFolder <- file.path(projectRootFolder, databaseId)
 if (!dir.exists(outputFolder)) {
   dir.create(outputFolder)
@@ -139,13 +139,8 @@ As a data owner, you will want to inspect these files for adherence to the `minC
 Once you have checked results, you can use the following code to send:
 ````
 # For uploading the results. You should have received the key file from the study coordinator:
-keyFileName <- "E:/Covid19VaccineAesiIncidenceCharacterization/study-data-site-covid19.dat"
+keyFileName <- "E:/AESI/study-data-site-covid19.dat"
 userName <- "study-data-site-covid19"
-
-# When finished with reviewing the diagnostics, use the next command
-# to upload the diagnostic results
-uploadDiagnosticsResults(outputFolder, keyFileName, userName)
-
 
 # When finished with reviewing the results, use the next command
 # upload study results to OHDSI SFTP server:

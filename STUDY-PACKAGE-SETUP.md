@@ -18,7 +18,7 @@ The script below is an example to use for setting up your environment. There are
 
 The setup script below is used to install the **Covid19VaccineAesiIncidenceCharacterization** package. You will need to modify this setup script as follows:
 
-- Set the `projectRootFolder` variable to the directory specific to your environment. In this example we are using `E:/Covid19VaccineAesiIncidenceCharacterization`. This root folder will serve a few purposes:
+- Set the `projectRootFolder` variable to the directory specific to your environment. In this example we are using `E:/AESI`. This root folder will serve a few purposes:
     - It will hold the R dependencies in subfolders in this directory.
     - It should be used to hold the output of running the study package.
 - If you need to change the default location where `renv` will install the R package dependencies, uncomment out the line: `Sys.setenv("RENV_PATHS_ROOT"="E:\renv")` and replace `"E:\renv"` with your directory of choice.
@@ -39,7 +39,7 @@ Then execute the script as shown below:
 #------------------------------------------------------------------
 install.packages("renv")
 
-projectFolder <- "E:/Covid19VaccineAesiIncidenceCharacterization"
+projectFolder <- "E:/AESI"
 setwd(projectFolder)
 
 # Download the lock file:
@@ -113,7 +113,7 @@ You can also browse the package documentation online at https://rstudio.github.i
 You can safely continue by pressing 'y' after this prompt since the renv.lock file is downloaded from the **Covid19VaccineAesiIncidenceCharacterization** GitHub code repository. Once the installation is complete, you may need to restart R (if you are working outside of RStudio) and you should see this message:
 
 ````
-Project 'E:/Covid19VaccineAesiIncidenceCharacterization' loaded. [renv 0.13.0]
+Project 'E:/AESI' loaded. [renv 0.13.0]
 ````
 
 Now the study package is installed and ready to execute! See the [study execution guide](STUDY-EXECUTION.md) for steps to run the package.
